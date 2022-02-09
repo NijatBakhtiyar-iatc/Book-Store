@@ -150,7 +150,22 @@ body {
   display: none;
 }
 
+#admin-search-form input{
+  padding: 10px 40px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+#admin-search-form button{
+  /* padding: 10px 40px; */
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background: #720418;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* 
 #searchAdminResult{
   display: none;
-}
+} */
 

@@ -52,62 +52,64 @@ $("#bookForm").on("submit", function (e) {
 // CAROUSEL INSTALLATION START
 function CarouselCall(buttonValue) {
   setTimeout(() => {
-    $(".spin-animation").css("display", "none")
-  },1000)
-    $(`.${buttonValue}-page-carousel`).slick({
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 1000,
-      arrows: true,
-      prevArrow:
-        "<button type='button' class='slick-prev slick-arrow'><img src='./images/icon/carousel-left-arrow.svg'/></button>",
-      nextArrow:
-        "<button type='button' class='slick-next slick-arrow'><img   src='./images/icon/carousel-right-arrow.svg'/></button>",
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1,
-          },
+    $(".spin-animation").css("display", "none");
+  }, 1000);
+  $(`.${buttonValue}-page-carousel`).slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    arrows: true,
+    prevArrow:
+      "<button type='button' class='slick-prev slick-arrow'><img src='./images/icon/carousel-left-arrow.svg'/></button>",
+    nextArrow:
+      "<button type='button' class='slick-next slick-arrow'><img   src='./images/icon/carousel-right-arrow.svg'/></button>",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
         },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            dots: true,
-          },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: true,
         },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-          },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
         },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
-      ],
-    });
+      },
+    ],
+  });
 }
 // FETCH ALL BOOK INFO FROM DATABASE
-AllBook();
+// AllBook();
 function AllBook() {
-  $(".spin-animation").css("display", "flex")
+  $(".spin-animation").css("display", "flex");
   delete window.CarouselCall;
   const buttonValue = $("#all-tab").html().trim().toLowerCase();
   const branch = ref(db, `/book-store/catalog/${buttonValue}`);
 
   onValue(branch, function (snap) {
     const catalogs = snap.val();
-    const catalogPageCarousel = $(`#${buttonValue} .${buttonValue}-page-carousel`);
+    const catalogPageCarousel = $(
+      `#${buttonValue} .${buttonValue}-page-carousel`
+    );
 
     for (let {
       addDate,
@@ -136,23 +138,23 @@ function AllBook() {
       cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
       card.append(cardImg, cardBody);
       catalogPageCarousel.append(card);
-      
     }
     CarouselCall(buttonValue);
-    
   });
-};
+}
 
 // FETCH BOOK INFO FROM DATABASE
 $("#myTab .nav-link").on("click", function () {
-  $(".spin-animation").css("display", "flex")
+  $(".spin-animation").css("display", "flex");
   delete window.CarouselCall;
   const buttonValue = $(this).html().trim().toLowerCase();
   const branch = ref(db, `/book-store/catalog/${buttonValue}`);
 
   onValue(branch, function (snap) {
     const catalogs = snap.val();
-    const catalogPageCarousel = $(`#${buttonValue} .${buttonValue}-page-carousel`);
+    const catalogPageCarousel = $(
+      `#${buttonValue} .${buttonValue}-page-carousel`
+    );
 
     for (let {
       addDate,
@@ -181,10 +183,8 @@ $("#myTab .nav-link").on("click", function () {
       cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
       card.append(cardImg, cardBody);
       catalogPageCarousel.append(card);
-      
     }
     CarouselCall(buttonValue);
-    
   });
 });
 
@@ -233,8 +233,10 @@ $("#admin-login-form").on("submit", function (e) {
 });
 
 // ADMIN SEARCH BOOK
-$(".search-book-section #searchAdminInput").on("change", function (e) {
-  const searchVal = e.target.value;
+$("#admin-search-form button").on("click", function (e) {
+  e.preventDefault()
+  // $(".modal.fade").css("display", "block")
+  const searchVal = $("#admin-search-form input").val();
   $("#searchAdminResult").css("display", "block");
   const branch = ref(db, `/book-store/catalog/all`);
   let checkVal = [];
@@ -251,7 +253,7 @@ $(".search-book-section #searchAdminInput").on("change", function (e) {
     }
 
     for (let value of checkVal) {
-      console.log(value);
+    const tHead
       const context = $("<p>").html(value);
       $("#searchAdminResult .context").append(context);
     }
@@ -282,13 +284,12 @@ onValue(ref(db, `/book-store/users`), function (snap) {
   }
 });
 
-
 // BOOK DESC CHARACTER LENGTH
 $("#bookDesc").on("keyup", function (e) {
-  $("#bookCounter").html(e.target.value.length)
-})
+  $("#bookCounter").html(e.target.value.length);
+});
 
 // STORE DESC CHARACTER LENGTH
 $("#aboutDesc").on("keyup", function (e) {
-  $("#aboutCounter").html(e.target.value.length)
-})
+  $("#aboutCounter").html(e.target.value.length);
+});

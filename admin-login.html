@@ -1,469 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="./images/admin_icon/logo.svg"
-      type="image/x-icon"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./css/admin.css" />
-    <title>Admin Panel | Book Store</title>
-  </head>
-  <body cz-shortcut-listen="true">
-    <div class="container-fluid">
-      <div class="row" id="adminPanel">
-        <div class="col-md-3 bg-pink-dark height-vh">
-          <div class="jumbotron p-0 bg-transparent position-fixed mx-4">
-            <h1 class="display-4">
-              <a href="./index.html">
-                <img
-                  class="img-fluid mt-5"
-                  src="./images/admin_icon/logo.svg"
-                  alt=""
-                />
-              </a>
-            </h1>
-            <hr class="my-4" />
-            <a
-              href="#menuAddBook"
-              class="d-flex align-items-center text-white mt-2 py-2 bg-pink-dark-hover"
-            >
-              <img
-                width="30"
-                class="img-fluid mr-3"
-                src="./images/admin_icon/logo.svg"
-                alt=""
-              />
-              <span> Home </span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="./images/admin_icon/logo.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./css/admin.css" />
+  <title>Admin Panel | Book Store</title>
+</head>
+
+<body cz-shortcut-listen="true">
+  <div class="container-fluid">
+    <div class="row" id="adminPanel">
+      <div class="col-md-3 bg-pink-dark height-vh">
+        <div class="jumbotron p-0 bg-transparent position-fixed mx-4">
+          <h1 class="display-4">
+            <a href="./index.html">
+              <img class="img-fluid mt-5" src="./images/admin_icon/logo.svg" alt="" />
             </a>
-            <a
-              href="#menuAboutStore"
-              class="d-flex align-items-center text-white mt-2 py-2 bg-pink-dark-hover"
-            >
-              <img
-                width="30"
-                class="img-fluid mr-3"
-                src="./images/admin_icon/logo.svg"
-                alt=""
-              />
-              <span> About </span>
-            </a>
-            <a
-              href="#menuJoin"
-              class="d-flex align-items-center text-white mt-2 py-2 bg-pink-dark-hover"
-            >
-              <img
-                width="30"
-                class="img-fluid mr-3"
-                src="./images/admin_icon/logo.svg"
-                alt=""
-              />
-              <span> Join </span>
-            </a>
-            <a
-              href="#menuContact"
-              class="d-flex align-items-center text-white mt-2 py-2 bg-pink-dark-hover"
-            >
-              <img
-                width="30"
-                class="img-fluid mr-3"
-                src="./images/admin_icon/logo.svg"
-                alt=""
-              />
-              <span> Contact </span>
-            </a>
-            <button
-              id="adminLogout"
-              class="btn d-flex align-items-center text-white mt-2 py-2 pl-0 bg-pink-dark-hover"
-            >
-              <img
-                width="30"
-                class="img-fluid mr-3"
-                src="./images/admin_icon/logo.svg"
-                alt=""
-              />
-              <span> Logout </span>
-            </button>
-          </div>
+          </h1>
+          <hr class="my-4" />
+          <a href="#menuAddBook" class="d-flex align-items-center text-white mt-2 py-2 bg-pink-dark-hover">
+            <img width="30" class="img-fluid mr-3" src="./images/admin_icon/logo.svg" alt="" />
+            <span> Home </span>
+          </a>
+          <a href="#menuAboutStore" class="d-flex align-items-center text-white mt-2 py-2 bg-pink-dark-hover">
+            <img width="30" class="img-fluid mr-3" src="./images/admin_icon/logo.svg" alt="" />
+            <span> About </span>
+          </a>
+          <a href="#menuJoin" class="d-flex align-items-center text-white mt-2 py-2 bg-pink-dark-hover">
+            <img width="30" class="img-fluid mr-3" src="./images/admin_icon/logo.svg" alt="" />
+            <span> Join </span>
+          </a>
+          <a href="#menuContact" class="d-flex align-items-center text-white mt-2 py-2 bg-pink-dark-hover">
+            <img width="30" class="img-fluid mr-3" src="./images/admin_icon/logo.svg" alt="" />
+            <span> Contact </span>
+          </a>
+          <button id="adminLogout" class="btn d-flex align-items-center text-white mt-2 py-2 pl-0 bg-pink-dark-hover">
+            <img width="30" class="img-fluid mr-3" src="./images/admin_icon/logo.svg" alt="" />
+            <span> Logout </span>
+          </button>
         </div>
-        <div class="col-md-9">
-          <div class="row ml-2">
-            <div class="col-md-12 mb-5">
-              <div class="d-flex justify-content-end mt-5 mx-5">
-                <div class="d-flex align-items-center mt-1">
-                  <img
-                    src="./images/admin_icon/user.svg"
-                    class="img-fluid mr-2"
-                    alt=""
-                  />
-                  <span class="mt-2">Admin</span>
-                </div>
+      </div>
+      <div class="col-md-9">
+        <div class="row ml-2">
+          <div class="col-md-12 mb-5">
+            <div class="d-flex justify-content-end mt-5 mx-5">
+              <div class="d-flex align-items-center mt-1">
+                <img src="./images/admin_icon/user.svg" class="img-fluid mr-2" alt="" />
+                <span class="mt-2">Admin</span>
               </div>
             </div>
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="h2 mb-4" id="menuAddBook">Home</div>
-                  <div class="search-book-section mb-5">
-                    <div class="h5 mb-3">Search book</div>
-                    <div>
-                      <div class="form-group d-flex w-50 position-relative">
-                        <div class="position-absolute">
-                          <img
-                            src="./images/admin_icon/search.svg"
-                            class="mt-2 ml-3"
-                            alt=""
-                          />
-                        </div>
-                        <input
-                          type="text"
-                          id="searchAdminInput"
-                          placeholder="Search Book"
-                          class="form-control px-5 rounded-35"
-                          aria-describedby="helpId"
-                        />
+          </div>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="h2 mb-4" id="menuAddBook">Home</div>
+                <div class="search-book-section mb-5">
+                  <div class="h5 mb-3">Search book</div>
+                  <div>
+                    <form class="form-group d-flex w-50 position-relative" id="admin-search-form">
+                      <div class="position-absolute">
+                        <img src="./images/admin_icon/search.svg" class="mt-2 ml-3" alt="" />
                       </div>
-                      <div
-                        id="searchAdminResult"
-                        class="jumbotron-fluid searchAdminResult position-absolute bg-white shadow rounded-35 overflow-auto w-50 pt-3 pb-1"
-                      >
-                        <div class="container">
-                          <div class="search-result-list">
-                            <div class="loading">
-                              <img
-                                class="rounded-circle"
-                                src="./images/Spinner-1s-200px.gif"
-                                width="45"
-                              />
+                      <input type="text" id="searchAdminInput" placeholder="Search Book"
+                        class="form-control" aria-describedby="helpId" />
+                      <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">
+                        Search
+                      </button>
+                    </form>
+                    <div id="searchAdminResult" class="jumbotron-fluid searchAdminResult">
+
+                      <!-- Modal -->
+                      <div class="modal fade show" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                        aria-modal="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- <div class="search-result-list">
+                                      <div class="loading">
+                                        <img
+                                          class="rounded-circle"
+                                          src="./images/Spinner-1s-200px.gif"
+                                          width="45"
+                                        />
+                                      </div>
+                                    </div> -->
+
+                              <div class="context">
+                                <table class="table w-100 text-center">
+                                  <thead class="bg-pink-dark text-white">
+                                    <!-- <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">Book Name</th>
+                                      <th scope="col">Author Name</th>
+                                    </tr> -->
+                                  </thead>
+                                  <tbody id="contactTable">
+                                    <!-- <tr>
+                                      <th scope="row">1</th>
+                                      <td>Arzu Hasanova</td>
+                                      <td>Baku Azerbaijan</td>
+                                    </tr> -->
+                                  </tbody>
+                                </table>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <div class="context"></div>
                       </div>
                     </div>
+
                   </div>
-                  <div class="form-book-section mt-5">
-                    <div class="h5">Book form</div>
-                    <div class="jumbotron w-75 bg-transparent pt-2 px-0">
-                      <form id="bookForm">
-                        <div class="form-group">
-                          <label for="bookName">Book Name</label>
-                          <input
-                            type="text"
-                            class="form-control form-control-lg"
-                            id="bookName"
-                            name="bookName"
-                          />
-                          <small
-                            class="form-text text-danger"
-                            style="display: none"
-                          ></small>
-                        </div>
-                        <div class="form-group">
-                          <label for="authorName">Author Name</label>
-                          <input
-                            type="text"
-                            class="form-control form-control-lg"
-                            name="authorName"
-                            id="authorName"
-                          />
-                          <small
-                            class="form-text text-danger"
-                            style="display: none"
-                          ></small>
-                        </div>
-                        <div class="form-group">
-                          <label for="bookImageUrl">Image Url</label>
-                          <input
-                            type="text"
-                            class="form-control form-control-lg"
-                            id="bookImageUrl"
-                            name="bookImageUrl"
-                          />
-                          <small
-                            class="form-text text-danger"
-                            style="display: none"
-                          ></small>
-                        </div>
-                        <div class="form-group">
-                          <label for="publicationYear">Publication Year</label>
-                          <input
-                            type="number"
-                            class="form-control form-control-lg"
-                            id="publicationYear"
-                            name="publicationYear"
-                          />
-                          <small
-                            class="form-text text-danger"
-                            style="display: none"
-                          ></small>
-                        </div>
-                        <div class="form-group">
-                          <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              value="new"
-                              id="isNew"
-                            />
-                            <label class="form-check-label" for="isNew">
-                              New
-                            </label>
-                          </div>
-                        </div>
-                        <div class="form-group mb-4">
-                          <label for="bookDesc">Description</label>
-                          <textarea
-                            id="bookDesc"
-                            name="bookDesc"
-                            maxlength="100"
-                          ></textarea>
-                          <span> <span id="bookCounter">0</span> / 100</span>
-                          <small
-                            class="form-text text-danger"
-                            style="display: none"
-                          ></small>
-                        </div>
-                        <div class="form-group">
-                          <label for="bookSelectType d-flex align-items-center">
-                            Book Type
-                            <div class="btn-group mb-1 p-3 rounded dropright">
-                              <button
-                                type="button"
-                                class="btn text-success"
-                                data-toggle="dropdown"
-                                aria-expanded="false"
-                              >
-                                <span class="h4"> + </span>
+                </div>
+              </div>
+              <div class="form-book-section mt-5">
+                <div class="h5">Book form</div>
+                <div class="jumbotron w-75 bg-transparent pt-2 px-0">
+                  <form id="bookForm">
+                    <div class="form-group">
+                      <label for="bookName">Book Name</label>
+                      <input type="text" class="form-control form-control-lg" id="bookName" name="bookName" />
+                      <small class="form-text text-danger" style="display: none"></small>
+                    </div>
+                    <div class="form-group">
+                      <label for="authorName">Author Name</label>
+                      <input type="text" class="form-control form-control-lg" name="authorName" id="authorName" />
+                      <small class="form-text text-danger" style="display: none"></small>
+                    </div>
+                    <div class="form-group">
+                      <label for="bookImageUrl">Image Url</label>
+                      <input type="text" class="form-control form-control-lg" id="bookImageUrl" name="bookImageUrl" />
+                      <small class="form-text text-danger" style="display: none"></small>
+                    </div>
+                    <div class="form-group">
+                      <label for="publicationYear">Publication Year</label>
+                      <input type="number" class="form-control form-control-lg" id="publicationYear"
+                        name="publicationYear" />
+                      <small class="form-text text-danger" style="display: none"></small>
+                    </div>
+                    <div class="form-group">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="new" id="isNew" />
+                        <label class="form-check-label" for="isNew">
+                          New
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="bookDesc">Description</label>
+                      <textarea id="bookDesc" name="bookDesc" maxlength="100"></textarea>
+                      <span> <span id="bookCounter">0</span> / 100</span>
+                      <small class="form-text text-danger" style="display: none"></small>
+                    </div>
+                    <div class="form-group">
+                      <label for="bookSelectType d-flex align-items-center">
+                        Book Type
+                        <div class="btn-group mb-1 p-3 rounded dropright">
+                          <button type="button" class="btn text-success" data-toggle="dropdown" aria-expanded="false">
+                            <span class="h4"> + </span>
+                          </button>
+                          <div class="dropdown-menu shadow">
+                            <div class="form-group p-1">
+                              <label for="addType">Add type</label>
+                              <input type="text" class="form-control" id="addType" name="publicationYear" />
+                              <button id="addTypeBtn" class="btn btn-outline-warning mt-3 btn-block">
+                                add
                               </button>
-                              <div class="dropdown-menu shadow">
-                                <div class="form-group p-1">
-                                  <label for="addType">Add type</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="addType"
-                                    name="publicationYear"
-                                  />
-                                  <button
-                                    id="addTypeBtn"
-                                    class="btn btn-outline-warning mt-3 btn-block"
-                                  >
-                                    add
-                                  </button>
-                                </div>
-                              </div>
-                            </div></label
-                          >
-                          <select
-                            name="bookSelectType"
-                            id="bookSelectType"
-                            class="form-control form-control-lg"
-                          >
-                            <option value="fantastic">Fantastic</option>
-                            <option value="bestseller">Bestseller</option>
-                            <option value="baby">Baby</option>
-                            <option value="development">Development</option>
-                            <option value="detectives">Detectives</option>
-                            <option value="classic">Classic</option>
-                            <option value="business">Business</option>
-                            <option value="humor">Humor</option>
-                          </select>
-                          <small
-                            class="form-text text-danger"
-                            style="display: none"
-                          ></small>
-                        </div>
-                        <button
-                          type="submit"
-                          id="bookFormSubmit"
-                          class="btn bg-orange btn-lg btn-block text-white"
-                        >
-                          Add
-                        </button>
-                      </form>
+                            </div>
+                          </div>
+                        </div></label>
+                      <select name="bookSelectType" id="bookSelectType" class="form-control form-control-lg">
+                        <option value="fantastic">Fantastic</option>
+                        <option value="bestseller">Bestseller</option>
+                        <option value="baby">Baby</option>
+                        <option value="development">Development</option>
+                        <option value="detectives">Detectives</option>
+                        <option value="classic">Classic</option>
+                        <option value="business">Business</option>
+                        <option value="humor">Humor</option>
+                      </select>
+                      <small class="form-text text-danger" style="display: none"></small>
                     </div>
-                  </div>
-                </div>
-                <div class="col-md-12 mt-5">
-                  <div class="h2 mb-4" id="menuAboutStore">About Store</div>
-                  <div class="form-book-section mt-2">
-                    <div class="jumbotron w-75 bg-transparent pt-2 px-0">
-                      <form id="addInfo">
-                        <div class="form-group">
-                          <label for="aboutTitle">Title</label>
-                          <input
-                            type="text"
-                            value=" About Store"
-                            class="form-control form-control-lg"
-                            id="aboutTitle"
-                            name="bookName"
-                          />
-                          <small
-                            class="form-text text-danger"
-                            style="display: none"
-                          ></small>
-                        </div>
-                        <div class="form-group mb-4">
-                          <label for="aboutDesc">Description</label>
-                          <textarea
-                            cols="30"
-                            rows="10"
-                            id="aboutDesc"
-                            name="aboutDesc"
-                            maxlength="1000"
-                          ></textarea>
-                          <span> <span id="aboutCounter">0</span> / 1000</span>
-                          <small
-                            class="form-text text-danger"
-                            style="display: none"
-                          ></small>
-                        </div>
-                        <div class="form-group">
-                          <label for="aboutImageUrl">Image Url</label>
-                          <input
-                            type="text"
-                            class="form-control form-control-lg"
-                            id="aboutImageUrl"
-                            name="aboutImageUrl"
-                          />
-                          <small
-                            class="form-text text-danger"
-                            style="display: none"
-                          ></small>
-                        </div>
-                        <button
-                          type="submit"
-                          id="aboutFormSubmit"
-                          class="btn bg-orange btn-lg btn-block text-white"
-                        >
-                          About Info Add
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12 my-5">
-                  <div class="h2 mb-4" id="menuJoin">Join Us</div>
-                  <table class="table w-50 text-center">
-                    <thead class="bg-pink-dark text-white">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Email Address</th>
-                      </tr>
-                    </thead>
-                    <tbody id="joinTable"></tbody>
-                  </table>
-                </div>
-                <div class="col-md-12 my-5 pr-5">
-                  <div class="h2 mb-4" id="menuContact">Contact Us</div>
-                  <table class="table w-100 text-center">
-                    <thead class="bg-pink-dark text-white">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Email Address</th>
-                        <th scope="col">Phone Number</th>
-                      </tr>
-                    </thead>
-                    <tbody id="contactTable">
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Arzu Hasanova</td>
-                        <td>Baku Azerbaijan</td>
-                        <td>arzuhasanova11@gmail.com</td>
-                        <td>994507777777</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                    <button type="submit" id="bookFormSubmit" class="btn bg-orange btn-lg btn-block text-white">
+                      Add
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="row bg-pink-dark height-vh" id="adminSignPanel">
-        <div class="modal-dialog w-50">
-          <div class="modal-content mt-5">
-            <div class="modal-body">
-              <div class="h1 modal-title mb-4 font-weight-bold text-center">
-                Welcome Admin
+            <div class="col-md-12 mt-5">
+              <div class="h2 mb-4" id="menuAboutStore">About Store</div>
+              <div class="form-book-section mt-2">
+                <div class="jumbotron w-75 bg-transparent pt-2 px-0">
+                  <form id="addInfo">
+                    <div class="form-group">
+                      <label for="aboutTitle">Title</label>
+                      <input type="text" value=" About Store" class="form-control form-control-lg" id="aboutTitle"
+                        name="bookName" />
+                      <small class="form-text text-danger" style="display: none"></small>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="aboutDesc">Description</label>
+                      <textarea cols="30" rows="10" id="aboutDesc" name="aboutDesc" maxlength="1000"></textarea>
+                      <span> <span id="aboutCounter">0</span> / 1000</span>
+                      <small class="form-text text-danger" style="display: none"></small>
+                    </div>
+                    <div class="form-group">
+                      <label for="aboutImageUrl">Image Url</label>
+                      <input type="text" class="form-control form-control-lg" id="aboutImageUrl" name="aboutImageUrl" />
+                      <small class="form-text text-danger" style="display: none"></small>
+                    </div>
+                    <button type="submit" id="aboutFormSubmit" class="btn bg-orange btn-lg btn-block text-white">
+                      About Info Add
+                    </button>
+                  </form>
+                </div>
               </div>
-              <form id="admin-login-form">
-                <div class="form-group">
-                  <input
-                    type="text"
-                    placeholder="Username"
-                    class="form-control form-control-lg"
-                    id="userName"
-                  />
-                </div>
-                <div class="form-group my-4">
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    class="form-control form-control-lg"
-                    id="password"
-                  />
-                </div>
-                <p class="check-user">Incorrect username or password</p>
-                <button
-                  type="submit"
-                  id="adminPanelLogin"
-                  class="btn bg-orange btn-lg text-white btn-block"
-                >
-                  Sign in
-                </button>
-                <div
-                  class="alert alert-danger mt-4 admin-error"
-                  role="alert"
-                  style="display: none"
-                >
-                  <h4 class="alert-heading">Error</h4>
-                  <p></p>
-                  <p class="mb-0">Please check form</p>
-                </div>
-                <div
-                  class="alert alert-success mt-4 admin-success"
-                  role="alert"
-                  style="display: none"
-                >
-                  <h4 class="alert-heading">Successful</h4>
-                  <p></p>
-                  <p class="mb-0">Welcome admin panel</p>
-                </div>
-              </form>
+            </div>
+            <div class="col-md-12 my-5">
+              <div class="h2 mb-4" id="menuJoin">Join Us</div>
+              <table class="table w-50 text-center">
+                <thead class="bg-pink-dark text-white">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email Address</th>
+                  </tr>
+                </thead>
+                <tbody id="joinTable"></tbody>
+              </table>
+            </div>
+            <div class="col-md-12 my-5 pr-5">
+              <div class="h2 mb-4" id="menuContact">Contact Us</div>
+              <table class="table w-100 text-center">
+                <thead class="bg-pink-dark text-white">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Phone Number</th>
+                  </tr>
+                </thead>
+                <tbody id="contactTable">
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Arzu Hasanova</td>
+                    <td>Baku Azerbaijan</td>
+                    <td>arzuhasanova11@gmail.com</td>
+                    <td>994507777777</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      type="module"
-      src="https://www.gstatic.com/firebasej
-      s/9.6.5/firebase-database.js"
-    ></script>
-    <script type="module" src="./js/admin.js"></script>
-  </body>
+  </div>
+  <div class="row bg-pink-dark height-vh" id="adminSignPanel">
+    <div class="modal-dialog w-50">
+      <div class="modal-content mt-5">
+        <div class="modal-body">
+          <div class="h1 modal-title mb-4 font-weight-bold text-center">
+            Welcome Admin
+          </div>
+          <form id="admin-login-form">
+            <div class="form-group">
+              <input type="text" placeholder="Username" class="form-control form-control-lg" id="userName" />
+            </div>
+            <div class="form-group my-4">
+              <input type="password" placeholder="Password" class="form-control form-control-lg" id="password" />
+            </div>
+            <p class="check-user">Incorrect username or password</p>
+            <button type="submit" id="adminPanelLogin" class="btn bg-orange btn-lg text-white btn-block">
+              Sign in
+            </button>
+            <div class="alert alert-danger mt-4 admin-error" role="alert" style="display: none">
+              <h4 class="alert-heading">Error</h4>
+              <p></p>
+              <p class="mb-0">Please check form</p>
+            </div>
+            <div class="alert alert-success mt-4 admin-success" role="alert" style="display: none">
+              <h4 class="alert-heading">Successful</h4>
+              <p></p>
+              <p class="mb-0">Welcome admin panel</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+  </script>
+  <script type="module" src="https://www.gstatic.com/firebasej
+      s/9.6.5/firebase-database.js"></script>
+  <script type="module" src="./js/admin.js"></script>
+</body>
+
 </html>
