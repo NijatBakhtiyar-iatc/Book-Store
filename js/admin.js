@@ -97,6 +97,51 @@ function CarouselCall(buttonValue) {
       ],
     });
 }
+// FETCH ALL BOOK INFO FROM DATABASE
+AllBook();
+function AllBook() {
+  $(".spin-animation").css("display", "flex")
+  delete window.CarouselCall;
+  const buttonValue = $("#all-tab").html().trim().toLowerCase();
+  const branch = ref(db, `/book-store/catalog/${buttonValue}`);
+
+  onValue(branch, function (snap) {
+    const catalogs = snap.val();
+    const catalogPageCarousel = $(`#${buttonValue} .${buttonValue}-page-carousel`);
+
+    for (let {
+      addDate,
+      author,
+      description,
+      name,
+      url,
+      year,
+      isNew,
+    } of Object.values(catalogs)) {
+      console.log(name);
+      const card = $("<div class = 'card'>");
+      const cardSpan = $("<span class = 'new-book'>").html("New");
+      const cardImg = $(`<img src = ${url} alt = ${name}>`);
+      const cardBody = $("<div class = 'card-body'>");
+      const cardBodyH5 = $("<h5>").html(name);
+      const cardBodyH6 = $("<h6>").html(author);
+      const cardBodyButton = $("<button class = 'read-more'>").html(
+        "Read More"
+      );
+
+      if (isNew) {
+        card.prepend(cardSpan);
+      }
+
+      cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
+      card.append(cardImg, cardBody);
+      catalogPageCarousel.append(card);
+      
+    }
+    CarouselCall(buttonValue);
+    
+  });
+};
 
 // FETCH BOOK INFO FROM DATABASE
 $("#myTab .nav-link").on("click", function () {
