@@ -80,7 +80,7 @@
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                              <h5 class="modal-title" id="staticBackdropLabel">Search Lists</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -98,20 +98,6 @@
 
                               <div class="context">
                                 <table class="table w-100 text-center">
-                                  <thead class="bg-pink-dark text-white">
-                                    <!-- <tr>
-                                      <th scope="col">#</th>
-                                      <th scope="col">Book Name</th>
-                                      <th scope="col">Author Name</th>
-                                    </tr> -->
-                                  </thead>
-                                  <tbody id="contactTable">
-                                    <!-- <tr>
-                                      <th scope="row">1</th>
-                                      <td>Arzu Hasanova</td>
-                                      <td>Baku Azerbaijan</td>
-                                    </tr> -->
-                                  </tbody>
                                 </table>
                               </div>
                             </div>
@@ -158,7 +144,7 @@
                     </div>
                     <div class="form-group mb-4">
                       <label for="bookDesc">Description</label>
-                      <textarea id="bookDesc" name="bookDesc" maxlength="100"></textarea>
+                      <textarea id="bookDesc" name="bookDesc" class="form form-control" maxlength="100"></textarea>
                       <span> <span id="bookCounter">0</span> / 100</span>
                       <small class="form-text text-danger" style="display: none"></small>
                     </div>
@@ -211,7 +197,7 @@
                     </div>
                     <div class="form-group mb-4">
                       <label for="aboutDesc">Description</label>
-                      <textarea cols="30" rows="10" id="aboutDesc" name="aboutDesc" maxlength="1000"></textarea>
+                      <textarea cols="30" rows="10" id="aboutDesc" class="form form-control" name="aboutDesc" maxlength="1000"></textarea>
                       <span> <span id="aboutCounter">0</span> / 1000</span>
                       <small class="form-text text-danger" style="display: none"></small>
                     </div>
@@ -219,6 +205,16 @@
                       <label for="aboutImageUrl">Image Url</label>
                       <input type="text" class="form-control form-control-lg" id="aboutImageUrl" name="aboutImageUrl" />
                       <small class="form-text text-danger" style="display: none"></small>
+                    </div>
+                    <div class="data-count">
+                      <label for="country-first">Branches Country(first)</label>
+                    <input type="number" id="country-first">
+                    <label for="catalog">Products Catalog</label>
+                    <input type="number" id="catalog">
+                    <label for="country-second">Branches Country(Second)</label>
+                    <input type="number" id="country-second">
+                    <label for="cities">Hours delivery to cities</label>
+                    <input type="number" id="cities">
                     </div>
                     <button type="submit" id="aboutFormSubmit" class="btn bg-orange btn-lg btn-block text-white">
                       About Info Add
@@ -242,7 +238,7 @@
             </div>
             <div class="col-md-12 my-5 pr-5">
               <div class="h2 mb-4" id="menuContact">Contact Us</div>
-              <table class="table w-100 text-center">
+              <table class="table w-100 text-center" id="contact-table">
                 <thead class="bg-pink-dark text-white">
                   <tr>
                     <th scope="col">#</th>
@@ -253,13 +249,6 @@
                   </tr>
                 </thead>
                 <tbody id="contactTable">
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Arzu Hasanova</td>
-                    <td>Baku Azerbaijan</td>
-                    <td>arzuhasanova11@gmail.com</td>
-                    <td>994507777777</td>
-                  </tr>
                 </tbody>
               </table>
             </div>

@@ -47,29 +47,6 @@
   color: #ff8b00 !important;
 }
 
-.catalog-page button.slick-arrow {
-  border: none !important;
-  background: none !important;
-}
-
-.catalog-page button.slick-arrow img {
-  width: 50px;
-  height: 50px;
-}
-
-.catalog-page button.slick-prev {
-  position: absolute;
-  left: -70px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.catalog-page button.slick-next {
-  position: absolute;
-  right: -70px;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
 .catalog-page .card {
   margin-right: 60px;

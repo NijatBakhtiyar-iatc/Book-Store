@@ -98,18 +98,14 @@ function CarouselCall(buttonValue) {
   });
 }
 // FETCH ALL BOOK INFO FROM DATABASE
-// AllBook();
 function AllBook() {
   $(".spin-animation").css("display", "flex");
-  delete window.CarouselCall;
-  const buttonValue = $("#all-tab").html().trim().toLowerCase();
-  const branch = ref(db, `/book-store/catalog/${buttonValue}`);
+
+  const branch = ref(db, `/book-store/catalog/all`);
 
   onValue(branch, function (snap) {
     const catalogs = snap.val();
-    const catalogPageCarousel = $(
-      `#${buttonValue} .${buttonValue}-page-carousel`
-    );
+    const catalogPageCarousel = $("#all .all-page-carousel");
 
     for (let {
       addDate,
@@ -120,7 +116,6 @@ function AllBook() {
       year,
       isNew,
     } of Object.values(catalogs)) {
-      console.log(name);
       const card = $("<div class = 'card'>");
       const cardSpan = $("<span class = 'new-book'>").html("New");
       const cardImg = $(`<img src = ${url} alt = ${name}>`);
@@ -139,68 +134,156 @@ function AllBook() {
       card.append(cardImg, cardBody);
       catalogPageCarousel.append(card);
     }
+    var buttonValue = "all";
     CarouselCall(buttonValue);
   });
 }
 
-// FETCH BOOK INFO FROM DATABASE
-$("#myTab .nav-link").on("click", function () {
-  $(".spin-animation").css("display", "flex");
-  delete window.CarouselCall;
-  const buttonValue = $(this).html().trim().toLowerCase();
-  const branch = ref(db, `/book-store/catalog/${buttonValue}`);
+// NAV TABS BUTTONS
+const branchNav = ref(db, "/book-store/catalog");
+onValue(branchNav, function (snap) {
+  $("#myTab").html("");
+  const navVal = snap.val();
+  let navArr = [];
 
-  onValue(branch, function (snap) {
-    const catalogs = snap.val();
-    const catalogPageCarousel = $(
-      `#${buttonValue} .${buttonValue}-page-carousel`
-    );
+  const liAll = $(`<li class="nav-item" role="presentation">`);
+  const buttonAll = $(
+    `<button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">`
+  ).html("All");
+  liAll.append(buttonAll);
 
-    for (let {
-      addDate,
-      author,
-      description,
-      name,
-      url,
-      year,
-      isNew,
-    } of Object.values(catalogs)) {
-      console.log(name);
-      const card = $("<div class = 'card'>");
-      const cardSpan = $("<span class = 'new-book'>").html("New");
-      const cardImg = $(`<img src = ${url} alt = ${name}>`);
-      const cardBody = $("<div class = 'card-body'>");
-      const cardBodyH5 = $("<h5>").html(name);
-      const cardBodyH6 = $("<h6>").html(author);
-      const cardBodyButton = $("<button class = 'read-more'>").html(
-        "Read More"
+  for (let value of Object.entries(navVal)) {
+    navArr.push(value[0]);
+  }
+  navArr.shift();
+  $("#myTab").append(liAll);
+  for (let newValue of navArr) {
+    const li = $(`<li class="nav-item" role="presentation">`);
+    const button = $(
+      `<button class="nav-link" id="${newValue}-tab" data-bs-toggle="tab" data-bs-target="#${newValue}" type="button" role="tab" aria-controls="${newValue}" aria-selected="false">`
+    ).html(newValue);
+    li.append(button);
+
+    $("#myTab").append(li);
+  }
+  AllBook();
+
+  // FETCH BOOK INFO FROM DATABASE
+  $("#myTab .nav-link").on("click", function () {
+    $(".spin-animation").css("display", "flex");
+    delete window.CarouselCall;
+    const buttonValue = $(this).html().trim().toLowerCase();
+    const branch = ref(db, `/book-store/catalog/${buttonValue}`);
+
+    onValue(branch, function (snap) {
+      const catalogs = snap.val();
+      const catalogPageCarousel = $(
+        `#${buttonValue} .${buttonValue}-page-carousel`
       );
 
-      if (isNew) {
-        card.prepend(cardSpan);
+      for (let {
+        addDate,
+        author,
+        description,
+        name,
+        url,
+        year,
+        isNew,
+      } of Object.values(catalogs)) {
+        const card = $("<div class = 'card'>");
+        const cardSpan = $("<span class = 'new-book'>").html("New");
+        const cardImg = $(`<img src = ${url} alt = ${name}>`);
+        const cardBody = $("<div class = 'card-body'>");
+        const cardBodyH5 = $("<h5>").html(name);
+        const cardBodyH6 = $("<h6>").html(author);
+        const cardBodyButton = $("<button class = 'read-more'>").html(
+          "Read More"
+        );
+
+        if (isNew) {
+          card.prepend(cardSpan);
+        }
+
+        cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
+        card.append(cardImg, cardBody);
+        catalogPageCarousel.append(card);
       }
 
-      cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
-      card.append(cardImg, cardBody);
-      catalogPageCarousel.append(card);
-    }
-    CarouselCall(buttonValue);
+      CarouselCall(buttonValue);
+    });
   });
 });
 
+// SET ABOUT STORE TO DATABASE
+const branchAbout = ref(db, `/book-store/about-store`);
 $("#addInfo").on("submit", function (e) {
   e.preventDefault();
 
   const aboutTitle = $("#aboutTitle").val();
   const aboutDesc = $("#aboutDesc").val();
   const aboutImageUrl = $("#aboutImageUrl").val();
+  const countryFirst = $(".data-count #country-first").val();
+  const catalog = $(".data-count #catalog").val();
+  const countrySecond = $(".data-count #country-second").val();
+  const cities = $(".data-count #cities").val();
 
-  const branch = ref(db, `/book-store/about-store`);
-
-  set(branch, {
+  set(branchAbout, {
     title: aboutTitle,
     description: aboutDesc,
     url: aboutImageUrl,
+    countryCountFirst: countryFirst,
+    catalog,
+    countryCountSecond: countrySecond,
+    cities,
+  });
+});
+
+// FETCH ABOUT DATA FROM DATABASE
+onValue(branchAbout, function (snap) {
+  const aboutVal = snap.val();
+  $(".about-store h2").html(aboutVal.title);
+  $(".about-store p").html(aboutVal.description);
+  $(".about-store .about-img").attr("src", aboutVal.url);
+  $(".about-store .spin-animation").css("display", "flex");
+  $(".about-section .country-first").attr(
+    "data-count",
+    aboutVal.countryCountFirst
+  );
+  $(".about-section .catalog").attr("data-count", aboutVal.catalog);
+  $(".about-section .cities").attr("data-count", aboutVal.cities);
+  $(".about-section .country-second").attr(
+    "data-count",
+    aboutVal.countryCountSecond
+  );
+
+  let a = 0;
+  $(window).scroll(function () {
+    const oTop = $(".about-section").offset().top - window.innerHeight;
+    if (a == 0 && $(window).scrollTop() > oTop) {
+      $(".value").each(function () {
+        const $this = $(this),
+          countTo = $this.attr("data-count");
+        $(this).animate({ fontSize: "2.7rem" }, 1500);
+        $({
+          countNum: $this.text(),
+        }).animate(
+          {
+            countNum: countTo,
+          },
+
+          {
+            duration: 2500,
+            easing: "swing",
+            step: function () {
+              $this.text(Math.floor(this.countNum));
+            },
+            complete: function () {
+              $this.text(this.countNum);
+            },
+          }
+        );
+      });
+    }
   });
 });
 
@@ -212,7 +295,7 @@ $("#addInfo").on("submit", function (e) {
 //   $("#adminPanel").css("display", "none");
 //   $("#admin-login-form").css("display", "block");
 // }
-
+// CHECK ADMIN LOGIN WITH DATABASE
 $("#admin-login-form").on("submit", function (e) {
   e.preventDefault();
   const userName = $("#admin-login-form #userName").val();
@@ -234,32 +317,52 @@ $("#admin-login-form").on("submit", function (e) {
 
 // ADMIN SEARCH BOOK
 $("#admin-search-form button").on("click", function (e) {
-  e.preventDefault()
+  e.preventDefault();
   // $(".modal.fade").css("display", "block")
   const searchVal = $("#admin-search-form input").val();
   $("#searchAdminResult").css("display", "block");
   const branch = ref(db, `/book-store/catalog/all`);
   let checkVal = [];
-  onValue(branch, function (snap) {
-    const databaseVal = snap.val();
-    checkVal = [];
+  if (searchVal) {
+    onValue(branch, function (snap) {
+      const databaseVal = snap.val();
+      checkVal = [];
+      const tHead = $("<thead class='bg-pink-dark text-white'>");
+      const tr = $("<tr>");
+      const thCount = $("<th scope='col'>").html("#");
+      const thBook = $("<th scope='col'>").html("Book Name");
+      const thAuthor = $("<th scope='col'>").html("Author Name");
+      tr.append(thCount, thBook, thAuthor);
+      tHead.append(tr);
+      $("#searchAdminResult .context table").append(tHead);
 
-    $("#searchAdminResult .context").html("");
-    $("#searchAdminResult img").css("display", "block");
-    for (let value of Object.values(databaseVal)) {
-      if (value.name.includes(searchVal)) {
-        checkVal.push(value.name);
+      $("#searchAdminResult img").css("display", "block");
+      for (let value of Object.values(databaseVal)) {
+        if (value.name.includes(searchVal)) {
+          checkVal.push(value);
+        }
       }
-    }
 
-    for (let value of checkVal) {
-    const tHead
-      const context = $("<p>").html(value);
-      $("#searchAdminResult .context").append(context);
-    }
+      checkVal.map((value, index) => {
+        const tBody = $("<thead id='contactTable'>");
+        const Bodytr = $("<tr>");
+        const BodythCount = $("<th scope='row'>").html(index + 1);
+        const BodytdBook = $("<td>").html(value.name);
+        const BodytdAuthor = $("<td>").html(value.author);
+        Bodytr.append(BodythCount, BodytdBook, BodytdAuthor);
+        tBody.append(Bodytr);
 
-    $("#searchAdminResult img").css("display", "none");
-  });
+        $("#searchAdminResult .context table").append(tBody);
+      });
+
+      $(".modal-content .close").on("click", function () {
+        $("#searchAdminResult .context table").html("");
+        checkVal = [];
+      });
+
+      $("#searchAdminResult img").css("display", "none");
+    });
+  }
 
   $(".search-book-section #searchAdminInput").on("keydown", function (e) {
     $("#searchAdminResult").css("display", "none");
@@ -293,3 +396,127 @@ $("#bookDesc").on("keyup", function (e) {
 $("#aboutDesc").on("keyup", function (e) {
   $("#aboutCounter").html(e.target.value.length);
 });
+
+// CONTATC US
+const branchForm = ref(db, "/book-store/contact");
+$(".contact-us #sendBtn").on("click", function () {
+  const inputName = $(".contact-us #inputName").val();
+  const inputEmail = $(".contact-us #inputEmail").val();
+  const inputAddress = $(".contact-us #inputAddress").val();
+  const inputPhone = $(".contact-us #inputPhone").val();
+  const pushNew = push(branchForm);
+
+  set(pushNew, {
+    name: inputName,
+    email: inputEmail,
+    address: inputAddress,
+    phone: inputPhone,
+  });
+});
+
+// FETCH CONTACTED USERS FROM DATABASE
+onValue(branchForm, function (snap) {
+  let count = 1;
+  const contactUsers = snap.val();
+  for (let value of Object.values(contactUsers)) {
+    const tr = $("<tr>");
+    const th = $("<th scope='row'>").html(count);
+    const tdName = $("<td>").html(value.name);
+    const tdAddress = $("<td>").html(value.address);
+    const tdEmail = $("<td>").html(value.email);
+    const tdPhone = $("<td>").html(value.phone);
+    tr.append(th, tdName, tdAddress, tdEmail, tdPhone);
+    $("#contact-table tbody").append(tr);
+    count++;
+  }
+});
+
+// SEARCH PAGE SEARCH FROM DATABASE
+$(".search-form button").on("click", function (e) {
+  e.preventDefault();
+  const buttonVal = $(this).html().trim().toLowerCase();
+
+  const searchVal = $(".search-form input").val();
+
+  $(".search-page-carousel").html("");
+
+  $(".search-spin-animation").css("display", "flex");
+
+  const branch = ref(db, `/book-store/catalog/all`);
+  let checkVal = [];
+
+  if (searchVal) {
+    onValue(branch, function (snap) {
+      const databaseVal = snap.val();
+      checkVal = [];
+
+      for (let value of Object.values(databaseVal)) {
+        if (value.name.includes(searchVal)) {
+          checkVal.push(value);
+        }
+      }
+
+      if (checkVal.length > 0) {
+        setTimeout(() => {
+          $(".search-spin-animation").css("display", "none");
+
+          checkVal.map((value, index) => {
+            const card = $("<div class='card'>");
+            const image = $("<div class='image'>");
+            const about = $("<div class='about'>");
+            const spanNew = $("<span class='new-book'>").html("New");
+            const img = $(`<img src='${value.url}'>`);
+            const h2 = $("<h2>").html(value.name);
+            const p = $("<p>").html(value.author);
+            const spanDes = $("<span>").html(value.description);
+            about.append(h2, p, spanDes);
+            image.append(spanNew, img);
+            card.append(image, about);
+            $(".search-page-carousel").append(card);
+          });
+
+          SearchCarousel();
+        }, 1000);
+      } else {
+        $(".search-page-carousel").html("No Result Found");
+        $(".search-spin-animation").css("display", "none");
+      }
+    });
+  } else {
+    $(".search-spin-animation").css("display", "none");
+  }
+});
+
+// CAROUSEL FOR SEARCH PAGE
+function SearchCarousel() {
+  $(`.search-page-carousel`).attr(
+    "class",
+    "search-page-carousel page-carousel"
+  );
+  let changeClass = Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .substring(0, 5);
+
+  $(`.search-page-carousel`).addClass(changeClass);
+  $(`.${changeClass}`).slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    arrows: true,
+    dots: false,
+    prevArrow:
+      "<button type='button' class='slick-prev slick-arrow'><img src='./images/icon/carousel-left-arrow.svg'/></button>",
+    nextArrow:
+      "<button type='button' class='slick-next slick-arrow'><img   src='./images/icon/carousel-right-arrow.svg'/></button>",
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          dots: true,
+        },
+      },
+    ],
+  });
+}
