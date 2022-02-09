@@ -164,6 +164,24 @@ body {
   cursor: pointer;
 }
 
+#searchAdminResult .removeBtn {
+  margin: 6px;
+  border: none;
+  font-size: 20px;
+  padding: 4px;
+  background: none;
+  color: hsl(349deg 93% 23%);
+  font-weight: bold;
+}
+
+#searchAdminResult thead {
+  border-bottom: 1px solid hsl(0deg 0% 80%);
+}
+
+#searchAdminResult thead :is(tr, th, td) {
+  border: none !important;
+}
+
 .data-count {
   display: flex;
   flex-direction: column;

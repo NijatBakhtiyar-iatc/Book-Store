@@ -1,4 +1,4 @@
-import { db, set, ref, onValue, push } from "./firebase.js";
+import { db, set, ref, onValue, push, remove } from "./firebase.js";
 const addDate = new Date().toLocaleDateString();
 const addDate1 = new Date("2/10/2022").toDateString();
 const newDate = new Date(addDate);
@@ -305,7 +305,6 @@ $("#admin-login-form").on("submit", function (e) {
 
     if (userName === loginInfo.username && password === loginInfo.password) {
       $("#adminPanel").css("display", "flex");
-      // localStorage.setItem("admin-login", JSON.stringify([userName,password ]))
     } else {
       $("#admin-login-form .check-user").css("display", "block");
       setTimeout(() => {
@@ -332,7 +331,8 @@ $("#admin-search-form button").on("click", function (e) {
       const thCount = $("<th scope='col'>").html("#");
       const thBook = $("<th scope='col'>").html("Book Name");
       const thAuthor = $("<th scope='col'>").html("Author Name");
-      tr.append(thCount, thBook, thAuthor);
+      const thButton = $("<th scope='col'>").html("");
+      tr.append(thCount, thBook, thAuthor, thButton);
       tHead.append(tr);
       $("#searchAdminResult .context table").append(tHead);
 
@@ -343,29 +343,59 @@ $("#admin-search-form button").on("click", function (e) {
         }
       }
 
-      checkVal.map((value, index) => {
-        const tBody = $("<thead id='contactTable'>");
-        const Bodytr = $("<tr>");
-        const BodythCount = $("<th scope='row'>").html(index + 1);
-        const BodytdBook = $("<td>").html(value.name);
-        const BodytdAuthor = $("<td>").html(value.author);
-        Bodytr.append(BodythCount, BodytdBook, BodytdAuthor);
-        tBody.append(Bodytr);
+      if (checkVal.length > 0) {
+        checkVal.map((value, index) => {
+          const tBody = $("<thead id='contactTable'>");
+          const Bodytr = $("<tr>");
+          const BodythCount = $("<th scope='row'>").html(index + 1);
+          const BodytdBook = $("<td class='book-name'>").html(value.name);
+          const BodytdAuthor = $("<td>").html(value.author);
+          const button = $("<button class='removeBtn'>").html("x");
+          Bodytr.append(BodythCount, BodytdBook, BodytdAuthor, button);
+          tBody.append(Bodytr);
 
-        $("#searchAdminResult .context table").append(tBody);
-      });
+          $("#searchAdminResult .context table").append(tBody);
+        });
+      } else {
+        console.log("test");
+        $("#searchAdminResult .context table").html("No Result");
+      }
 
       $(".modal-content .close").on("click", function () {
         $("#searchAdminResult .context table").html("");
         checkVal = [];
       });
-
-      $("#searchAdminResult img").css("display", "none");
     });
+  } else {
+    $("#searchAdminResult .context table").html("No Result");
   }
 
   $(".search-book-section #searchAdminInput").on("keydown", function (e) {
     $("#searchAdminResult").css("display", "none");
+  });
+
+  $("#searchAdminResult .removeBtn").on("click", function () {
+    let bookName = $(this)
+      .closest("tr")
+      .children(".book-name")
+      .html()
+      .toLowerCase()
+      .trim();
+    let tr = $(this).closest("tr").parent();
+    console.log(tr);
+    const branchSearch = ref(db, "/book-store/catalog");
+    onValue(branchSearch, function (snap) {
+      const searchVal = snap.val();
+      for (let catalog of Object.entries(searchVal)) {
+        for (let value of Object.entries(catalog[1])) {
+          console.log(value[1]);
+          if (bookName === value[1].name) {
+            // remove(tr);
+            remove(ref(db, `/book-store/catalog/${catalog[0]}/${value[0]}`));
+          }
+        }
+      }
+    });
   });
 });
 
