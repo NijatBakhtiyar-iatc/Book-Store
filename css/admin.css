@@ -1,0 +1,156 @@
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&family=Roboto:ital,wght@0,100;0,400;0,700;1,500&display=swap");
+
+:root {
+  --mainColorHome: #391f00;
+  --mainColorPink: #720418;
+  --mainColorOrange: #ff8b00;
+  --mainColorPurple: #9b51e0;
+  --mainColorText: #241400;
+  --mainBorderColor: #e6e7e9c2;
+  --fontRoboto: "Montserrat", sans-serif;
+  --fontMons: "Roboto", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fontMons);
+}
+
+.bg-pink-dark {
+  background-color: var(--mainColorPink) !important;
+}
+
+.bg-pink-dark-hover:hover {
+  background-color: #72041896 !important;
+}
+
+.bg-orange {
+  background-color: var(--mainColorOrange) !important;
+}
+
+.text-orange {
+  color: var(--mainColorOrange) !important;
+}
+
+.bg-orange:hover {
+  background-color: #dd7a00 !important;
+}
+
+.bg-purple {
+  background-color: var(--mainColorPurple) !important;
+}
+
+.bg-main-light {
+  background-color: var(--mainBorderColor) !important;
+}
+
+.bg-home-dark {
+  background-color: var(--mainColorHome) !important;
+}
+
+.text-main {
+  color: var(--mainColorText) !important;
+}
+
+.rounded-35 {
+  border-radius: 35px !important;
+}
+
+.height-vh {
+  min-height: 100vh !important;
+}
+
+.font-14 {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+.absolute-right {
+  right: 0 !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-pointer:hover {
+  text-decoration: underline;
+}
+
+.searchAdminResult {
+  height: 300px;
+}
+
+.nav-active {
+  color: var(--mainColorOrange) !important;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.about-img {
+  width: 570px;
+  height: 310px;
+}
+
+.prev-search {
+  position: absolute;
+  top: 42%;
+  left: -5%;
+  cursor: pointer;
+}
+
+.next-search {
+  position: absolute;
+  top: 42%;
+  right: -5%;
+  cursor: pointer;
+}
+
+.slider-content {
+  height: 420px;
+}
+
+ /* Scroll */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+} 
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 2px;
+} 
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--mainColorPink);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mainColorPink);
+}
+
+#admin-login-form{
+  display: block;
+}
+
+#admin-login-form .check-user{
+  min-height: 24px;
+  background: #FEDCE0;
+  color: #96394F;
+  padding: 10px;
+  border-radius: 4px;
+  display: none;
+}
+
+#searchAdminResult{
+  display: none;
+}
+

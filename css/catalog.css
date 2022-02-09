@@ -1,0 +1,399 @@
+/*SECTION START*/
+.catalog-page {
+  margin-top: 200px;
+}
+
+.catalog-page .catalog-carousel .tab-content {
+  margin-top: 100px;
+}
+
+.catalog-page .slick-list.draggable {
+  cursor: grab;
+}
+
+.catalog-page .all-book-carousel {
+  display: flex;
+  align-items: center;
+}
+
+.catalog-page h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.catalog-page ul {
+  flex: 1;
+  justify-content: center;
+  border: none !important;
+}
+
+.catalog-page ul li:first-child {
+  margin-right: 24px;
+}
+
+.catalog-page ul button {
+  border: none !important;
+  color: #343a40 !important;
+  font-size: 14px;
+  transition: 0.4s;
+}
+
+.catalog-page ul button:hover {
+  text-decoration: underline;
+}
+
+.catalog-page ul li button.active {
+  color: #ff8b00 !important;
+}
+
+.catalog-page button.slick-arrow {
+  border: none !important;
+  background: none !important;
+}
+
+.catalog-page button.slick-arrow img {
+  width: 50px;
+  height: 50px;
+}
+
+.catalog-page button.slick-prev {
+  position: absolute;
+  left: -70px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.catalog-page button.slick-next {
+  position: absolute;
+  right: -70px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.catalog-page .card {
+  margin-right: 60px;
+  padding: 20px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  position: relative;
+  border-radius: 4px;
+}
+
+.catalog-page .card .new-book {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  display: inline-block;
+  padding: 4px;
+  background: #dc3545;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.catalog-page .card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.catalog-page .card :is(h5, h6) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.catalog-page .card .card-body {
+  padding: 16px 0 0;
+  text-align: center;
+}
+
+.catalog-page .card button {
+  background: #ff8b00;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  border: none;
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 6px;
+  transition: 0.4s;
+}
+
+.catalog-page .card button:hover {
+  background: #dd7a00;
+}
+
+.catalog-page :is(.bestseller, .new-release) h2 {
+  text-align: center;
+  margin: 130px 0 50px;
+}
+
+/* READ MORE START */
+.catalog-page .read-more-page {
+  margin-top: 15%;
+  display: none;
+}
+
+.catalog-page .read-more-page button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #ff8b00;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  transition: 0.4s;
+  margin-bottom: 54px;
+}
+
+.catalog-page .read-more-page button:hover {
+  background: #dd7a00;
+}
+
+.catalog-page .read-more-page button img {
+  width: 20px;
+  transition: 0.4s;
+}
+
+.catalog-page .read-more-page button:hover img {
+  transform: translateX(-5px);
+}
+
+.catalog-page .read-more-page span {
+  color: #fff;
+  background-color: #007bff;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.catalog-page .read-more-page h2 {
+  font-size: 32px;
+  margin: 4px 0 8px;
+  font-weight: 700;
+}
+
+.catalog-page .read-more-page .book-image {
+  /* width: 450px; */
+  height: 550px;
+  padding-left: 25%;
+}
+
+.catalog-page .read-more-page .book-image img {
+  border-radius: 4px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* CATALOG PAGE CAROUSEL */
+.page-carousel {
+  min-width: 100%;
+  overflow: hidden;
+  max-height: 353.2px;
+}
+
+.page-carousel .slick-track {
+  min-width: 100%;
+  overflow: hidden;
+}
+
+.page-carousel .card.slick-slide {
+  min-width: 264px;
+}
+
+.tab-content {
+  position: relative;
+  min-height: 353.2px;
+}
+
+.spin-animation {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* RESPONSIVE DESIGN */
+@media only screen and (max-width: 992px) {
+  .catalog-page button.slick-arrow img {
+    width: 40px;
+    height: 40px;
+  }
+  .catalog-page button.slick-next {
+    right: -60px;
+  }
+  .catalog-page button.slick-prev {
+    left: -60px;
+  }
+  .catalog-page .slick-dots button {
+    display: none;
+  }
+  .catalog-page .slick-dots {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* CATALOG PAGE */
+  .catalog-page button.slick-arrow {
+    display: none !important;
+  }
+  .catalog-page .slick-dots {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  .catalog-page .slick-dots li {
+    margin-right: 20px !important;
+    cursor: pointer;
+  }
+  .catalog-page .slick-dots li::marker {
+    font-size: 30px !important;
+    color: #ccc;
+  }
+  .catalog-page .slick-dots li.slick-active::marker {
+    color: #720418 !important;
+  }
+
+  .catalog-page .all-book-carousel h2 {
+    display: none;
+  }
+
+  /* READ MORE */
+  .catalog-page .read-more-page .book-image {
+    padding: 0 25% 0 0;
+  }
+}
+
+.load-text {
+  color: #ffffff;
+  text-align: center;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+  position: relative;
+}
+
+.load-text:after {
+  position: absolute;
+  content: "";
+  -webkit-animation: Dots 2s cubic-bezier(0, 0.39, 1, 0.68) infinite;
+  animation: Dots 2s cubic-bezier(0, 0.39, 1, 0.68) infinite;
+}
+
+.loader {
+  margin: 5% auto 30px;
+}
+
+.book {
+  border: 4px solid #ffffff;
+  width: 60px;
+  height: 45px;
+  position: relative;
+  perspective: 150px;
+}
+
+.page {
+  display: block;
+  width: 30px;
+  height: 45px;
+  border: 4px solid #ffffff;
+  border-left: 1px solid #8455b2;
+  margin: 0;
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  overflow: hidden;
+  background: #8455b2;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
+}
+
+.book .page:nth-child(1) {
+  -webkit-animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.6s infinite;
+  animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.6s infinite;
+}
+
+.book .page:nth-child(2) {
+  -webkit-animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.45s infinite;
+  animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.45s infinite;
+}
+
+.book .page:nth-child(3) {
+  -webkit-animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.2s infinite;
+  animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.2s infinite;
+}
+
+/* Page turn */
+@-webkit-keyframes pageTurn {
+  0% {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  20% {
+    background: #4b1e77;
+  }
+  40% {
+    background: rebeccapurple;
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+  }
+  100% {
+    background: rebeccapurple;
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes pageTurn {
+  0% {
+    transform: rotateY(0deg);
+  }
+  20% {
+    background: #4b1e77;
+  }
+  40% {
+    background: rebeccapurple;
+    transform: rotateY(-180deg);
+  }
+  100% {
+    background: rebeccapurple;
+    transform: rotateY(-180deg);
+  }
+}
+
+/* Dots */
+@keyframes Dots {
+  0% {
+    content: "";
+  }
+  33% {
+    content: ".";
+  }
+  66% {
+    content: "..";
+  }
+  100% {
+    content: "...";
+  }
+}

@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+/*MAIN SECTION*/
+.bear img {
+  width: 80%;
+}
+
+.info-section a {
+  background-color: rgb(255, 123, 0);
+}
+
+.info-section {
+  margin-top: 15%;
+}
+
+.catalogButton {
+  font-weight: bold;
+}
+
+.catalog-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.catalog-section .btn {
+  height: 12vh;
+  width: 100%;
+  background-color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.about-section .value {
+  height: 5rem;
+  font-size: 2.7rem;
+  font-weight: bold;
+}
+
+.delivery-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
