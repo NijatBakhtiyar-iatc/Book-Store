@@ -3,11 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+<<<<<<< HEAD
 
 body {
   font-family: "Roboto", sans-serif;
 }
 
+=======
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+>>>>>>> 2176ac8f1d320513a26ee855c4f96df25463debb
 .container-fluid {
   padding: 0;
 }
@@ -46,7 +54,11 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
+<<<<<<< HEAD
   z-index: 999;
+=======
+  z-index: 1;
+>>>>>>> 2176ac8f1d320513a26ee855c4f96df25463debb
   background: #fff;
 }
 
@@ -55,12 +67,20 @@ header ul {
   justify-content: center;
 }
 
+<<<<<<< HEAD
+=======
+/* header .navbar-collapse {
+  height: 100vh;
+} */
+
+>>>>>>> 2176ac8f1d320513a26ee855c4f96df25463debb
 header a {
   color: #343a40 !important;
   font-weight: 400;
   transition: 0.4s;
   text-decoration: none;
 }
+<<<<<<< HEAD
 header ul li a:hover {
   color: #7a0202 !important;
   opacity: 0.9;
@@ -71,6 +91,24 @@ header ul li a.active {
   font-weight: 600 !important;
   text-decoration: none;
 }
+=======
+
+header a.active {
+  color: #ff8b00 !important;
+  font-weight: 600 !important;
+  text-decoration: underline;
+}
+
+header .navbar-collapse button {
+  background: unset;
+  border: none;
+}
+
+.nav-tabs .nav-link {
+  text-transform: capitalize;
+}
+
+>>>>>>> 2176ac8f1d320513a26ee855c4f96df25463debb
 /* =======  SOCIAL MEDIA START ======= */
 .socialMedia-section {
   margin: 130px 0 50px;
@@ -80,12 +118,21 @@ header ul li a.active {
   font-size: 28px;
   font-weight: bold;
 }
+<<<<<<< HEAD
 
 .socialMedia-section a {
   font-size: 4.5rem;
   color: #1d1102;
 }
 
+=======
+
+.socialMedia-section a {
+  font-size: 4.5rem;
+  color: #1d1102;
+}
+
+>>>>>>> 2176ac8f1d320513a26ee855c4f96df25463debb
 /* =======  FOOTER START ======= */
 footer {
   background-color: #391f00;
@@ -119,6 +166,7 @@ footer {
   display: none;
 }
 
+<<<<<<< HEAD
 /* RESPONSIVE DESIGN */
 @media only screen and (max-width: 992px) {
   /* MENU BAR */
@@ -150,6 +198,8 @@ footer {
   }
 }
 
+=======
+>>>>>>> 2176ac8f1d320513a26ee855c4f96df25463debb
 .page-carousel button.slick-arrow {
   border: none !important;
   background: none !important;
@@ -176,23 +226,91 @@ footer {
 
 /* RESPONSIVE DESIGN */
 @media only screen and (max-width: 992px) {
+  /* MENU BAR */
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    border-bottom: none;
+  }
+
+  header .navbar-collapse {
+    width: 100%;
+    background: hsl(0deg 0% 100%);
+  }
+
+  header .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    align-items: center;
+    gap: 30px;
+    padding-top: 60px;
+  }
+
+  header :is(.navbar-toggler.collapsed, .navbar-toggler) {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: none;
+    z-index: 2;
+  }
+
+  header :is(.navbar-toggler.collapsed, .navbar-toggler) .line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #720418;
+    transition: 0.4s;
+  }
+
+  header .navbar-toggler[aria-expanded="true"] .line:nth-child(2) {
+    display: none;
+  }
+
+  header .navbar-toggler[aria-expanded="true"] .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+
+  header .navbar-toggler[aria-expanded="true"] .line:nth-child(3) {
+    transform: rotate(-45deg);
+  }
   .page-carousel button.slick-arrow img {
     width: 40px;
     height: 40px;
   }
+
   .page-carousel button.slick-next {
     right: -60px;
   }
+
   .page-carousel button.slick-prev {
     left: -60px;
   }
+
   .page-carousel .slick-dots button {
     display: none;
   }
+
   .page-carousel .slick-dots {
     display: none;
   }
 
+<<<<<<< HEAD
+=======
+  header .navbar-collapse button {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 60px;
+  }
+}
+>>>>>>> 2176ac8f1d320513a26ee855c4f96df25463debb
 
 @media only screen and (max-width: 768px) {
   /* CATALOG PAGE */
@@ -217,7 +335,10 @@ footer {
     color: #720418 !important;
   }
 }
+<<<<<<< HEAD
 
 .nav-tabs .nav-link {
   text-transform: capitalize;
 }
+=======
+>>>>>>> 2176ac8f1d320513a26ee855c4f96df25463debb
