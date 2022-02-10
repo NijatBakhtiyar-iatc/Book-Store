@@ -18,6 +18,11 @@ html {
   scroll-behavior: smooth;
 }
 
+.nav-link:hover{
+  color: rgb(49, 19, 15);
+}
+
+
 /* SCROL BAR */
 /* width */
 ::-webkit-scrollbar {
