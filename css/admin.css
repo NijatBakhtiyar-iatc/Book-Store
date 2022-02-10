@@ -182,6 +182,27 @@ body {
   border: none !important;
 }
 
+#adminPanel {
+  display: none;
+}
+
+#adminPanel textarea {
+  resize: none;
+}
+
+#adminPanel :is(#aboutFormSubmit, #bookFormSubmit) {
+  margin-top: 30px;
+}
+
+#adminPanel .form-book-section {
+  padding-left: 15px;
+}
+
+#adminPanel .jumbotron {
+  padding-top: 0 !important;
+  margin: 0 !important;
+}
+
 .data-count {
   display: flex;
   flex-direction: column;

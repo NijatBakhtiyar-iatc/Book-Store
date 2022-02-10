@@ -1,5 +1,10 @@
 import { db, set, ref, onValue, push, remove } from "./firebase.js";
 
+window.scroll({
+  top: 0,
+  behavior: "smooth",
+});
+
 // ADD SELECT VALUE
 $(".dropdown-menu #addTypeBtn").on("click", function () {
   const newCatVal = $(".dropdown-menu #addType").val();
@@ -168,15 +173,26 @@ onValue(branchNav, function (snap) {
   // FETCH BOOK INFO FROM DATABASE
   $("#myTab .nav-link").on("click", function () {
     $(".spin-animation").css("display", "flex");
-    delete window.CarouselCall;
     const buttonValue = $(this).html().trim().toLowerCase();
     const branch = ref(db, `/book-store/catalog/${buttonValue}`);
 
     onValue(branch, function (snap) {
       const catalogs = snap.val();
-      const catalogPageCarousel = $(
-        `#${buttonValue} .${buttonValue}-page-carousel`
+      $(".catalog-carousel .tab-content").html("");
+      const tabPane = $(
+        `<div class="tab-pane fade show active" id="${buttonValue}" role="tabpanel" aria-labelledby="${buttonValue}-tab">`
       );
+      const tabCarousel = $(
+        `<div class="${buttonValue}-page-carousel page-carousel test">`
+      );
+      const spin = $(`<div class="spin-animation">`);
+      const spinImg = $(`<img
+      class="rounded-circle"
+      src="./images/Spinner-1s-200px.gif"
+      width="45"/>`);
+
+      spin.append(spinImg);
+      tabPane.append(spin, tabCarousel);
 
       for (let {
         addDate,
@@ -203,9 +219,11 @@ onValue(branchNav, function (snap) {
 
         cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
         card.append(cardImg, cardBody);
-        catalogPageCarousel.append(card);
-      }
 
+        tabCarousel.append(card);
+      }
+      $(".catalog-carousel .tab-content").append(tabPane);
+      ReadMore();
       CarouselCall(buttonValue);
     });
   });
@@ -302,6 +320,11 @@ $("#admin-login-form").on("submit", function (e) {
 
     if (userName === loginInfo.username && password === loginInfo.password) {
       $("#adminPanel").css("display", "flex");
+      $("#adminSignPanel").css("display", "none");
+      $("#adminLogout").on("click", function () {
+        $("#adminPanel").css("display", "none");
+        $("#adminSignPanel").css("display", "flex");
+      });
     } else {
       $("#admin-login-form .check-user").css("display", "block");
       setTimeout(() => {
@@ -618,36 +641,34 @@ NewRelease();
 function NewRelease() {
   $(".spin-animation").css("display", "flex");
 
-  const branchNew = ref(db, "/book-store/catalog");
+  const branchNew = ref(db, "/book-store/catalog/all");
 
   onValue(branchNew, function (snap) {
     const newVal = snap.val();
     const newCarousel = $(".newrelease-page-carousel");
 
     for (let key of Object.values(newVal)) {
-      for (let value of Object.values(key)) {
-        // console.log(value);
-        const publishDate = new Date(value.addDate);
-        const updateDate = publishDate.setDate(publishDate.getDate() + 40);
-        const newDate = new Date().getTime();
-        const dayDiff = Math.floor(
-          (updateDate - newDate) / (24 * 1000 * 3600) + 1
+      // console.log(value);
+      const publishDate = new Date(key.addDate);
+      const updateDate = publishDate.setDate(publishDate.getDate() + 40);
+      const newDate = new Date().getTime();
+      const dayDiff = Math.floor(
+        (updateDate - newDate) / (24 * 1000 * 3600) + 1
+      );
+      if (key.isNew && dayDiff > 0) {
+        const card = $("<div class = 'card'>");
+        const cardSpan = $("<span class = 'new-book'>").html("New");
+        const cardImg = $(`<img src = ${key.url} alt = ${key.name}>`);
+        const cardBody = $("<div class = 'card-body'>");
+        const cardBodyH5 = $("<h5>").html(key.name);
+        const cardBodyH6 = $("<h6>").html(key.author);
+        const cardBodyButton = $("<button class = 'read-more'>").html(
+          "Read More"
         );
-        if (value.isNew && dayDiff > 0) {
-          const card = $("<div class = 'card'>");
-          const cardSpan = $("<span class = 'new-book'>").html("New");
-          const cardImg = $(`<img src = ${value.url} alt = ${value.name}>`);
-          const cardBody = $("<div class = 'card-body'>");
-          const cardBodyH5 = $("<h5>").html(value.name);
-          const cardBodyH6 = $("<h6>").html(value.author);
-          const cardBodyButton = $("<button class = 'read-more'>").html(
-            "Read More"
-          );
 
-          cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
-          card.append(cardSpan, cardImg, cardBody);
-          newCarousel.append(card);
-        }
+        cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
+        card.append(cardSpan, cardImg, cardBody);
+        newCarousel.append(card);
       }
     }
 
@@ -669,7 +690,6 @@ function ReadMore() {
       const allVal = snap.val();
       for (let value of Object.values(allVal)) {
         if (bookName === value.name) {
-          console.log(value);
           $(".read-more-page .book-info span").html(value.year || "No added");
           $(".read-more-page .book-info h2").html(value.name || "No added");
           $(".read-more-page .book-info h3").html(value.author || "No added");
@@ -687,3 +707,16 @@ function ReadMore() {
     $(".read-more-page").css("display", "none");
   });
 }
+
+// INDEX CATALOG NAMES
+const branchCatalogName = ref(db, "/book-store/catalog");
+onValue(branchCatalogName, function (snap) {
+  const catalogNameVal = snap.val();
+
+  for (let value of Object.entries(catalogNameVal)) {
+    const button = $(
+      "<a href='catalog.html' target='_blank' class='btn'>"
+    ).html(value[0]);
+    $(".catalog-btns").append(button);
+  }
+});
