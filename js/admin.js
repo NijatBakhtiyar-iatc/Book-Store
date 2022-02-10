@@ -205,7 +205,7 @@ onValue(branchNav, function (snap) {
         catalogPageCarousel.append(card);
       }
 
-      // CarouselCall(buttonValue);
+      CarouselCall(buttonValue);
     });
   });
 });
@@ -310,7 +310,7 @@ $("#admin-login-form").on("submit", function (e) {
   });
 });
 
-// ADMIN SEARCH BOOK /// Kenan
+// ADMIN SEARCH BOOK // Kenan
 $("#admin-search-form button").on("click", function (e) {
   e.preventDefault();
   // $(".modal.fade").css("display", "block")
@@ -382,15 +382,17 @@ $("#admin-search-form button").on("click", function (e) {
       for (let catalog of Object.entries(searchVal)) {
         for (let value of Object.entries(catalog[1])) {
           if (bookName === value[1].name) {
-            // Problemli yer 
-
+            // Problemli Yer
+            // checkVal.map(value => {
+            //   console.log(value);
+            // })
             $("#searchAdminResult .context table tbody").html("");
 
             tr.remove();
             remove(ref(db, `/book-store/catalog/${catalog[0]}/${value[0]}`));
             let newArr = [...new Set(checkVal)];
 
-            // Problemli yer bitdi
+            // Problemli Yer Bitdi
             newArr.map((value, index) => {
               const newBodytr = $("<tr>");
               const newBodythCount = $("<th scope='row'>").html(index + 1);
@@ -631,7 +633,6 @@ function NewRelease() {
           (updateDate - newDate) / (24 * 1000 * 3600) + 1
         );
         if (value.isNew && dayDiff > 0) {
-          console.log("object");
           const card = $("<div class = 'card'>");
           const cardSpan = $("<span class = 'new-book'>").html("New");
           const cardImg = $(`<img src = ${value.url} alt = ${value.name}>`);
@@ -648,6 +649,7 @@ function NewRelease() {
         }
       }
     }
+  
     var buttonValue = "newrelease";
     CarouselCall(buttonValue);
   });
