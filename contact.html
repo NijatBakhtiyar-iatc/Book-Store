@@ -28,8 +28,9 @@
           rel="stylesheet" />
         <!-- FONTAWESOME CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-        <link rel="stylesheet" href="./css/contact.css" />
         <link rel="stylesheet" href="./css/general.css" />
+        <link rel="stylesheet" href="./css/contact.css" />
+
     
         <title>Book Store</title>
       </head>
@@ -81,18 +82,32 @@
                   <h2 class="contactTitle mt-5">Contact Us</h2>
                   <div class="row mt-4">
                     <div class="form-group col-md-6">
-                      <input class="form-control form-control-lg px-5 rounded" id="inputName" placeholder="Full Name">
+                      <input type="text" class="form-control form-control-lg px-5 rounded" id="inputName" placeholder="Full Name" required>
                     </div>
                     <div class="form-group col-md-6">
-                      <input class="form-control form-control-lg px-5 rounded" type="Email" id="inputEmail" placeholder="Email">
+                      <input type="email" class="form-control form-control-lg px-5 rounded" id="inputEmail" placeholder="Email" required>
                     </div>
                   </div>
                   <div class="row mt-2">
                     <div class="form-group col-md-6">
-                      <input class="form-control form-control-lg px-5 rounded" id="inputAddress" placeholder="Address">
+                      <input type="text" class="form-control form-control-lg px-5 rounded" id="inputAddress" placeholder="Address" required>
                     </div>
                     <div class="form-group col-md-6">
-                      <input type="number" class="form-control form-control-lg px-5 rounded" id="inputPhone" placeholder="Phone">
+                      <input type="tel" class="form-control form-control-lg px-5 rounded" id="inputPhone" placeholder="Phone"    .nav{
+                        max-height: none;
+                        top: 0;
+                        position: relative;
+                        float: right;
+                        width: fit-content;
+                    }
+                    .menu li{
+                        float: left;
+                    }
+                    .menu a:hover{
+                        background-color: transparent;
+                        color: var(--gray);
+                
+                    }>
                     </div>
                   </div>
                   <div class="row mt-4">

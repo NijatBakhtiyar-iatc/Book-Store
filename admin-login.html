@@ -66,7 +66,7 @@
                       <div class="position-absolute">
                         <img src="./images/admin_icon/search.svg" class="mt-2 ml-3" alt="" />
                       </div>
-                      <input type="text" id="searchAdminInput" placeholder="Search Book"
+                      <input type="search" id="searchAdminInput" placeholder="Search Book"
                         class="form-control" aria-describedby="helpId" />
                       <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">
                         Search
@@ -115,23 +115,23 @@
                   <form id="bookForm">
                     <div class="form-group">
                       <label for="bookName">Book Name</label>
-                      <input type="text" class="form-control form-control-lg" id="bookName" name="bookName" />
+                      <input type="text" class="form-control form-control-lg" id="bookName" name="bookName" required/>
                       <small class="form-text text-danger" style="display: none"></small>
                     </div>
                     <div class="form-group">
                       <label for="authorName">Author Name</label>
-                      <input type="text" class="form-control form-control-lg" name="authorName" id="authorName" />
+                      <input type="text" class="form-control form-control-lg" name="authorName" id="authorName" required/>
                       <small class="form-text text-danger" style="display: none"></small>
                     </div>
                     <div class="form-group">
                       <label for="bookImageUrl">Image Url</label>
-                      <input type="text" class="form-control form-control-lg" id="bookImageUrl" name="bookImageUrl" />
+                      <input type="url" class="form-control form-control-lg" id="bookImageUrl" name="bookImageUrl" required />
                       <small class="form-text text-danger" style="display: none"></small>
                     </div>
                     <div class="form-group">
                       <label for="publicationYear">Publication Year</label>
                       <input type="number" class="form-control form-control-lg" id="publicationYear"
-                        name="publicationYear" />
+                        name="publicationYear" required/>
                       <small class="form-text text-danger" style="display: none"></small>
                     </div>
                     <div class="form-group">
@@ -158,7 +158,7 @@
                           <div class="dropdown-menu shadow">
                             <div class="form-group p-1">
                               <label for="addType">Add type</label>
-                              <input type="text" class="form-control" id="addType" name="publicationYear" />
+                              <input type="number" class="form-control" id="addType" name="publicationYear" required />
                               <button id="addTypeBtn" class="btn btn-outline-warning mt-3 btn-block">
                                 add
                               </button>
@@ -192,7 +192,7 @@
                     <div class="form-group">
                       <label for="aboutTitle">Title</label>
                       <input type="text" value=" About Store" class="form-control form-control-lg" id="aboutTitle"
-                        name="bookName" />
+                        name="bookName" required />
                       <small class="form-text text-danger" style="display: none"></small>
                     </div>
                     <div class="form-group mb-4">
@@ -203,7 +203,7 @@
                     </div>
                     <div class="form-group">
                       <label for="aboutImageUrl">Image Url</label>
-                      <input type="text" class="form-control form-control-lg" id="aboutImageUrl" name="aboutImageUrl" />
+                      <input type="url" class="form-control form-control-lg" id="aboutImageUrl" name="aboutImageUrl"required  />
                       <small class="form-text text-danger" style="display: none"></small>
                     </div>
                     <div class="data-count">
@@ -216,7 +216,7 @@
                     <label for="cities">Hours delivery to cities</label>
                     <input type="number" id="cities">
                     </div>
-                    <button type="submit" id="aboutFormSubmit" class="btn bg-orange btn-lg btn-block text-white">
+                    <button type="submit" id="aboutFormSubmit" class="btn bg-orange btn-lg btn-block text-white mt-3">
                       About Info Add
                     </button>
                   </form>
@@ -266,10 +266,10 @@
           </div>
           <form id="admin-login-form">
             <div class="form-group">
-              <input type="text" placeholder="Username" class="form-control form-control-lg" id="userName" />
+              <input type="text" placeholder="Username" class="form-control form-control-lg" id="userName" required/>
             </div>
             <div class="form-group my-4">
-              <input type="password" placeholder="Password" class="form-control form-control-lg" id="password" />
+              <input type="password" placeholder="Password" class="form-control form-control-lg" id="password" required/>
             </div>
             <p class="check-user">Incorrect username or password</p>
             <button type="submit" id="adminPanelLogin" class="btn bg-orange btn-lg text-white btn-block">
