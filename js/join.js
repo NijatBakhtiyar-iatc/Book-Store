@@ -33,10 +33,33 @@ async function registerUser() {
   }
 }
 
+async function loginUser() {
+  try {
+    const joinEmail = $("#join-email").val();
+    const joinPassword = $("#join-password").val();
+
+    const user = await signInWithEmailAndPassword(
+      auth,
+      joinEmail,
+      joinPassword
+    );
+
+    // console.log(user);
+
+  } catch (error) {
+    console.log(error.message);
+  }
+}
 
 
 $("#join-form").on("submit", function(e) {
   e.preventDefault();
 
   registerUser();
+  loginUser();
+
+  onAuthStateChanged(auth, (user) => {
+    console.log(user);
+  });
+
 });

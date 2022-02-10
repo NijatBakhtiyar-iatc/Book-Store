@@ -1,4 +1,4 @@
-import { db, set, ref, onValue, push } from "./firebase.js";
+import { db, set, ref, onValue, push, onAuthStateChanged, auth } from "./firebase.js";
 const addDate = new Date().toLocaleDateString();
 const addDate1 = new Date("2/10/2022").toDateString();
 const newDate = new Date(addDate);
@@ -292,3 +292,10 @@ $("#bookDesc").on("keyup", function (e) {
 $("#aboutDesc").on("keyup", function (e) {
   $("#aboutCounter").html(e.target.value.length)
 })
+
+
+//Join Us Part
+
+// onAuthStateChanged(auth, (currentUser) => {
+//   console.log(currentUser);
+// });
