@@ -107,9 +107,20 @@
   background: #dd7a00;
 }
 
-.catalog-page :is(.bestseller, .new-release) h2 {
+.catalog-page :is(.bestseller-carousel, .newrelease-carousel) h2 {
   text-align: center;
   margin: 130px 0 50px;
+}
+
+.catalog-page .bestseller-carousel{
+  position: relative;
+}
+.catalog-page .newrelease-carousel{
+  position: relative;
+}
+
+.catalog-page .bestseller-carousel .spin-animation{
+  transform: translate(-50%, -40%);
 }
 
 /* READ MORE START */

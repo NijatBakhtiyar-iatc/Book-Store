@@ -1,8 +1,4 @@
 import { db, set, ref, onValue, push, remove } from "./firebase.js";
-const addDate = new Date().toLocaleDateString();
-const addDate1 = new Date("2/10/2022").toDateString();
-const newDate = new Date(addDate);
-const newDate1 = new Date(addDate1);
 
 // ADD SELECT VALUE
 $(".dropdown-menu #addTypeBtn").on("click", function () {
@@ -209,7 +205,7 @@ onValue(branchNav, function (snap) {
         catalogPageCarousel.append(card);
       }
 
-      CarouselCall(buttonValue);
+      // CarouselCall(buttonValue);
     });
   });
 });
@@ -394,7 +390,7 @@ $("#admin-search-form button").on("click", function (e) {
             tr.remove();
             remove(ref(db, `/book-store/catalog/${catalog[0]}/${value[0]}`));
             let newArr = [...new Set(checkVal)];
-            
+
             newArr.map((value, index) => {
               const newBodytr = $("<tr>");
               const newBodythCount = $("<th scope='row'>").html(index + 1);
@@ -568,5 +564,91 @@ function SearchCarousel() {
         },
       },
     ],
+  });
+}
+
+// BESTSELLER CAROUSEL
+BestSeller();
+function BestSeller() {
+  $(".spin-animation").css("display", "flex");
+
+  const branchSeller = ref(db, "/book-store/catalog/bestseller");
+
+  onValue(branchSeller, function (snap) {
+    const sellerVal = snap.val();
+    const sellerCarousel = $(".bestseller-page-carousel");
+
+    for (let {
+      addDate,
+      author,
+      description,
+      name,
+      url,
+      year,
+      isNew,
+    } of Object.values(sellerVal)) {
+      const card = $("<div class = 'card'>");
+      const cardSpan = $("<span class = 'new-book'>").html("New");
+      const cardImg = $(`<img src = ${url} alt = ${name}>`);
+      const cardBody = $("<div class = 'card-body'>");
+      const cardBodyH5 = $("<h5>").html(name);
+      const cardBodyH6 = $("<h6>").html(author);
+      const cardBodyButton = $("<button class = 'read-more'>").html(
+        "Read More"
+      );
+
+      if (isNew) {
+        card.prepend(cardSpan);
+      }
+
+      cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
+      card.append(cardImg, cardBody);
+      sellerCarousel.append(card);
+    }
+    var buttonValue = "bestseller";
+    CarouselCall(buttonValue);
+  });
+}
+
+// NEW RELEASE CAROUSEL
+NewRelease();
+function NewRelease() {
+  $(".spin-animation").css("display", "flex");
+
+  const branchNew = ref(db, "/book-store/catalog");
+
+  onValue(branchNew, function (snap) {
+    const newVal = snap.val();
+    const newCarousel = $(".newrelease-page-carousel");
+
+    for (let key of Object.values(newVal)) {
+      for (let value of Object.values(key)) {
+        // console.log(value);
+        const publishDate = new Date(value.addDate);
+        const updateDate = publishDate.setDate(publishDate.getDate() + 40);
+        const newDate = new Date().getTime();
+        const dayDiff = Math.floor(
+          (updateDate - newDate) / (24 * 1000 * 3600) + 1
+        );
+        if (value.isNew && dayDiff > 0) {
+          console.log("object");
+          const card = $("<div class = 'card'>");
+          const cardSpan = $("<span class = 'new-book'>").html("New");
+          const cardImg = $(`<img src = ${value.url} alt = ${value.name}>`);
+          const cardBody = $("<div class = 'card-body'>");
+          const cardBodyH5 = $("<h5>").html(value.name);
+          const cardBodyH6 = $("<h6>").html(value.author);
+          const cardBodyButton = $("<button class = 'read-more'>").html(
+            "Read More"
+          );
+
+          cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
+          card.append(cardSpan, cardImg, cardBody);
+          newCarousel.append(card);
+        }
+      }
+    }
+    var buttonValue = "newrelease";
+    CarouselCall(buttonValue);
   });
 }
