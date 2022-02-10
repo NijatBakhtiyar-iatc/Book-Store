@@ -109,9 +109,13 @@ width: 90%;
   width: 90%;
   background-color: rgb(255, 123, 0);
 }
+
+
 .alert-danger{
   display: none;
 }
+
+
 
 .alert-success{
   display: none;
