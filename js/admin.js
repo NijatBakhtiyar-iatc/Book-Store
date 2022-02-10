@@ -669,6 +669,7 @@ function ReadMore() {
       const allVal = snap.val();
       for (let value of Object.values(allVal)) {
         if (bookName === value.name) {
+          console.log(value);
           $(".read-more-page .book-info span").html(value.year || "No added");
           $(".read-more-page .book-info h2").html(value.name || "No added");
           $(".read-more-page .book-info h3").html(value.author || "No added");
