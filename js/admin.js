@@ -310,7 +310,7 @@ $("#admin-login-form").on("submit", function (e) {
   });
 });
 
-// ADMIN SEARCH BOOK
+// ADMIN SEARCH BOOK /// Kenan
 $("#admin-search-form button").on("click", function (e) {
   e.preventDefault();
   // $(".modal.fade").css("display", "block")
@@ -382,15 +382,15 @@ $("#admin-search-form button").on("click", function (e) {
       for (let catalog of Object.entries(searchVal)) {
         for (let value of Object.entries(catalog[1])) {
           if (bookName === value[1].name) {
-            // checkVal.map(value => {
-            //   console.log(value);
-            // })
+            // Problemli yer 
+
             $("#searchAdminResult .context table tbody").html("");
 
             tr.remove();
             remove(ref(db, `/book-store/catalog/${catalog[0]}/${value[0]}`));
             let newArr = [...new Set(checkVal)];
 
+            // Problemli yer bitdi
             newArr.map((value, index) => {
               const newBodytr = $("<tr>");
               const newBodythCount = $("<th scope='row'>").html(index + 1);
