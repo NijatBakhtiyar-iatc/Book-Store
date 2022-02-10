@@ -133,6 +133,7 @@ function AllBook() {
     var buttonValue = "all";
     CarouselCall(buttonValue);
   });
+  ReadMore();
 }
 
 // NAV TABS BUTTONS
@@ -649,8 +650,39 @@ function NewRelease() {
         }
       }
     }
-  
+
     var buttonValue = "newrelease";
     CarouselCall(buttonValue);
+    ReadMore();
+  });
+}
+
+// READ MORE COMPONENT
+function ReadMore() {
+  $(".catalog-carousel .read-more").on("click", function () {
+    $(".catalog-carousel").css("display", "none");
+    $(".read-more-page").css("display", "block");
+
+    let bookName = $(this).closest(".card-body").children("h5").html();
+    const branchAll = ref(db, "/book-store/catalog/all");
+    onValue(branchAll, function (snap) {
+      const allVal = snap.val();
+      for (let value of Object.values(allVal)) {
+        if (bookName === value.name) {
+          $(".read-more-page .book-info span").html(value.year || "No added");
+          $(".read-more-page .book-info h2").html(value.name || "No added");
+          $(".read-more-page .book-info h3").html(value.author || "No added");
+          $(".read-more-page .book-info p").html(
+            value.description || "No added"
+          );
+
+          $(".read-more-page .book-image img").attr("src", `${value.url}`);
+        }
+      }
+    });
+  });
+  $(".read-more-page .back-btn").on("click", function () {
+    $(".catalog-carousel").css("display", "block");
+    $(".read-more-page").css("display", "none");
   });
 }
