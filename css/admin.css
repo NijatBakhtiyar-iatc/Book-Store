@@ -82,7 +82,7 @@ body {
 }
 
 .searchAdminResult {
-  height: 300px;
+  min-height: fit-content;
 }
 
 .nav-active {
@@ -114,17 +114,17 @@ body {
   height: 420px;
 }
 
- /* Scroll */
+/* Scroll */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
-} 
+}
 
 /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
   border-radius: 2px;
-} 
+}
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
@@ -137,20 +137,72 @@ body {
   background: var(--mainColorPink);
 }
 
-#admin-login-form{
+#admin-login-form {
   display: block;
 }
 
-#admin-login-form .check-user{
+#admin-login-form .check-user {
   min-height: 24px;
-  background: #FEDCE0;
-  color: #96394F;
+  background: #fedce0;
+  color: #96394f;
   padding: 10px;
   border-radius: 4px;
   display: none;
 }
 
-#searchAdminResult{
-  display: none;
+#admin-search-form input {
+  padding: 10px 40px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+#admin-search-form button {
+  /* padding: 10px 40px; */
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background: #720418;
+  color: #fff;
+  cursor: pointer;
 }
 
+#searchAdminResult .removeBtn {
+  margin: 6px;
+  border: none;
+  font-size: 20px;
+  padding: 4px;
+  background: none;
+  color: hsl(349deg 93% 23%);
+  font-weight: bold;
+}
+
+#searchAdminResult thead {
+  border-bottom: 1px solid hsl(0deg 0% 80%);
+}
+
+#searchAdminResult thead :is(tr, th, td) {
+  border: none !important;
+}
+
+.data-count {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.data-count input {
+  height: calc(1.5em + 1rem + 2px);
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+  color: hsl(210deg 9% 31%);
+  background-color: hsl(0deg 0% 100%);
+  background-clip: padding-box;
+  border: 1px solid hsl(210deg 14% 83%);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.data-count input:focus {
+  border-color: hsl(211deg 100% 75%);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
