@@ -326,15 +326,15 @@ $("#admin-search-form button").on("click", function (e) {
     onValue(branch, function (snap) {
       const databaseVal = snap.val();
       checkVal = [];
-      const tHead = $("<thead class='bg-pink-dark text-white'>");
-      const tr = $("<tr>");
-      const thCount = $("<th scope='col'>").html("#");
-      const thBook = $("<th scope='col'>").html("Book Name");
-      const thAuthor = $("<th scope='col'>").html("Author Name");
-      const thButton = $("<th scope='col'>").html("");
-      tr.append(thCount, thBook, thAuthor, thButton);
-      tHead.append(tr);
-      $("#searchAdminResult .context table").append(tHead);
+      // const tHead = $("<thead class='bg-pink-dark text-white'>");
+      // const tr = $("<tr>");
+      // const thCount = $("<th scope='col'>").html("#");
+      // const thBook = $("<th scope='col'>").html("Book Name");
+      // const thAuthor = $("<th scope='col'>").html("Author Name");
+      // const thButton = $("<th scope='col'>").html("");
+      // tr.append(thCount, thBook, thAuthor, thButton);
+      // tHead.append(tr);
+      // $("#searchAdminResult .context table").append(tHead);
 
       $("#searchAdminResult img").css("display", "block");
       for (let value of Object.values(databaseVal)) {
@@ -345,19 +345,16 @@ $("#admin-search-form button").on("click", function (e) {
 
       if (checkVal.length > 0) {
         checkVal.map((value, index) => {
-          const tBody = $("<thead id='contactTable'>");
           const Bodytr = $("<tr>");
           const BodythCount = $("<th scope='row'>").html(index + 1);
           const BodytdBook = $("<td class='book-name'>").html(value.name);
           const BodytdAuthor = $("<td>").html(value.author);
           const button = $("<button class='removeBtn'>").html("x");
           Bodytr.append(BodythCount, BodytdBook, BodytdAuthor, button);
-          tBody.append(Bodytr);
 
-          $("#searchAdminResult .context table").append(tBody);
+          $("#searchAdminResult .context table tbody").append(Bodytr);
         });
       } else {
-        console.log("test");
         $("#searchAdminResult .context table").html("No Result");
       }
 
@@ -381,17 +378,40 @@ $("#admin-search-form button").on("click", function (e) {
       .html()
       .toLowerCase()
       .trim();
-    let tr = $(this).closest("tr").parent();
-    console.log(tr);
+    let tr = $(this).closest("tr");
+    // console.log(tr);
     const branchSearch = ref(db, "/book-store/catalog");
     onValue(branchSearch, function (snap) {
       const searchVal = snap.val();
       for (let catalog of Object.entries(searchVal)) {
         for (let value of Object.entries(catalog[1])) {
-          console.log(value[1]);
           if (bookName === value[1].name) {
-            // remove(tr);
+            // checkVal.map(value => {
+            //   console.log(value);
+            // })
+            $("#searchAdminResult .context table tbody").html("");
+
+            tr.remove();
             remove(ref(db, `/book-store/catalog/${catalog[0]}/${value[0]}`));
+            let newArr = [...new Set(checkVal)];
+            
+            newArr.map((value, index) => {
+              const newBodytr = $("<tr>");
+              const newBodythCount = $("<th scope='row'>").html(index + 1);
+              const newBodytdBook = $("<td class='book-name'>").html(
+                value.name
+              );
+              const newBodytdAuthor = $("<td>").html(value.author);
+              const newbutton = $("<button class='removeBtn'>").html("x");
+              newBodytr.append(
+                newBodythCount,
+                newBodytdBook,
+                newBodytdAuthor,
+                newbutton
+              );
+
+              $("#searchAdminResult .context table tbody").append(newBodytr);
+            });
           }
         }
       }
