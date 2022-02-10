@@ -148,3 +148,75 @@ width: 90%;
   }
 }
 
+
+.page-carousel button.slick-arrow {
+  border: none !important;
+  background: none !important;
+}
+
+.page-carousel button.slick-arrow img {
+  width: 50px;
+  height: 50px;
+}
+
+.page-carousel button.slick-prev {
+  position: absolute;
+  left: -70px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.page-carousel button.slick-next {
+  position: absolute;
+  right: -70px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* RESPONSIVE DESIGN */
+@media only screen and (max-width: 992px) {
+  .page-carousel button.slick-arrow img {
+    width: 40px;
+    height: 40px;
+  }
+  .page-carousel button.slick-next {
+    right: -60px;
+  }
+  .page-carousel button.slick-prev {
+    left: -60px;
+  }
+  .page-carousel .slick-dots button {
+    display: none;
+  }
+  .page-carousel .slick-dots {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* CATALOG PAGE */
+  .page-carousel button.slick-arrow {
+    display: none !important;
+  }
+  .page-carousel .slick-dots {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  .page-carousel .slick-dots li {
+    margin-right: 20px !important;
+    cursor: pointer;
+  }
+  .page-carousel .slick-dots li::marker {
+    font-size: 30px !important;
+    color: #ccc;
+  }
+  .page-carousel .slick-dots li.slick-active::marker {
+    color: #720418 !important;
+  }
+}
+
+.nav-tabs .nav-link{
+  text-transform: capitalize;
+}
