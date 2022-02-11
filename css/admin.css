@@ -141,15 +141,6 @@ body {
   display: block;
 }
 
-#admin-login-form .check-user {
-  min-height: 24px;
-  background: #fedce0;
-  color: #96394f;
-  padding: 10px;
-  border-radius: 4px;
-  display: none;
-}
-
 #admin-search-form input {
   padding: 10px 40px;
   border-top-left-radius: 12px;
@@ -162,6 +153,10 @@ body {
   background: #720418;
   color: #fff;
   cursor: pointer;
+}
+
+#adminPanelLogin {
+  margin: 0 auto;
 }
 
 #searchAdminResult .removeBtn {

@@ -81,6 +81,7 @@ function CarouselCall(buttonValue) {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          dots: true,
         },
       },
       {
@@ -88,6 +89,7 @@ function CarouselCall(buttonValue) {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: true,
         },
       },
     ],
