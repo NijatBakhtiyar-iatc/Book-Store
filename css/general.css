@@ -49,6 +49,7 @@ header {
   width: 100%;
   z-index: 3;
   background: #fff;
+  box-shadow: 0 3px 2px rgb(0 0 0 / 15%);
 }
 
 header ul {
@@ -68,16 +69,18 @@ header a {
 }
 
 header a.active {
-  color: #ff8b00 !important;
+  color: #710418 !important;
   font-weight: 600 !important;
   font-weight: 600 !important;
-  border-bottom: 1px solid;
   height: 21px !important;
+  border: none !important;
 }
 
 header .navbar-collapse button {
   background: unset;
   border: none;
+  color: #710418;
+  font-weight: bold;
 }
 
 .navbar-nav .nav-link {
@@ -201,6 +204,20 @@ footer {
   font-weight: bold;
 }
 
+.check-user {
+  min-height: 24px;
+  background: #fedce0;
+  color: #96394f;
+  padding: 10px;
+  border-radius: 4px;
+  display: none;
+}
+
+:is(#join-form, #admin-login-form) .check-user {
+  width: 90%;
+  margin: 20px auto;
+}
+
 #adminPanel {
   display: none;
 }
@@ -237,6 +254,7 @@ footer {
 
   header {
     border-bottom: none;
+    box-shadow: unset;
   }
 
   header .container {
@@ -289,10 +307,7 @@ footer {
     padding: 10px;
     transition: 0.4s;
   }
-  header a.active {
-    border: none;
-    color: #710418 !important;
-  }
+ 
   header .navbar-nav li:hover {
     background: #710418;
   }

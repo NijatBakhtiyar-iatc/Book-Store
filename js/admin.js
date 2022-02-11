@@ -1,10 +1,5 @@
 import { db, set, ref, onValue, push, remove } from "./firebase.js";
 
-window.scroll({
-  top: 0,
-  behavior: "smooth",
-});
-
 // ADD SELECT VALUE
 $(".dropdown-menu #addTypeBtn").on("click", function () {
   const newCatVal = $(".dropdown-menu #addType").val();
@@ -86,6 +81,7 @@ function CarouselCall(buttonValue) {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          dots: true,
         },
       },
       {
@@ -93,6 +89,7 @@ function CarouselCall(buttonValue) {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: true,
         },
       },
     ],
@@ -334,9 +331,8 @@ $("#admin-login-form").on("submit", function (e) {
   });
 });
 
-// ADMIN SEARCH BOOK // Kenan
+// ADMIN SEARCH BOOK
 $("#admin-search-form button").on("click", function (e) {
-  e.preventDefault();
   // $(".modal.fade").css("display", "block")
   const searchVal = $("#admin-search-form input").val();
   $("#searchAdminResult").css("display", "block");
@@ -346,15 +342,6 @@ $("#admin-search-form button").on("click", function (e) {
     onValue(branch, function (snap) {
       const databaseVal = snap.val();
       checkVal = [];
-      // const tHead = $("<thead class='bg-pink-dark text-white'>");
-      // const tr = $("<tr>");
-      // const thCount = $("<th scope='col'>").html("#");
-      // const thBook = $("<th scope='col'>").html("Book Name");
-      // const thAuthor = $("<th scope='col'>").html("Author Name");
-      // const thButton = $("<th scope='col'>").html("");
-      // tr.append(thCount, thBook, thAuthor, thButton);
-      // tHead.append(tr);
-      // $("#searchAdminResult .context table").append(tHead);
 
       $("#searchAdminResult img").css("display", "block");
       for (let value of Object.values(databaseVal)) {
@@ -364,6 +351,8 @@ $("#admin-search-form button").on("click", function (e) {
       }
 
       if (checkVal.length > 0) {
+        console.log("true");
+        console.log(checkVal.length);
         checkVal.map((value, index) => {
           const Bodytr = $("<tr>");
           const BodythCount = $("<th scope='row'>").html(index + 1);
@@ -379,7 +368,7 @@ $("#admin-search-form button").on("click", function (e) {
       }
 
       $(".modal-content .close").on("click", function () {
-        $("#searchAdminResult .context table").html("");
+        $("#searchAdminResult .context table tbody").html("");
         checkVal = [];
       });
     });
@@ -391,7 +380,8 @@ $("#admin-search-form button").on("click", function (e) {
     $("#searchAdminResult").css("display", "none");
   });
 
-  $("#searchAdminResult .removeBtn").on("click", function () {
+  $(document).on("click", "#searchAdminResult .removeBtn", function () {
+    alert("test");
     let bookName = $(this)
       .closest("tr")
       .children(".book-name")
@@ -443,6 +433,7 @@ $("#admin-search-form button").on("click", function (e) {
 
 // JOINED US INFO FROM DATABASE
 onValue(ref(db, `/book-store/users`), function (snap) {
+  $("#joinTable").html("");
   const usersInfo = snap.val();
   let count = 1;
 
@@ -490,6 +481,7 @@ $(".contact-us #sendBtn").on("click", function () {
 onValue(branchForm, function (snap) {
   let count = 1;
   const contactUsers = snap.val();
+  $("#contact-table tbody").html("");
   for (let value of Object.values(contactUsers)) {
     const tr = $("<tr>");
     const th = $("<th scope='row'>").html(count);
