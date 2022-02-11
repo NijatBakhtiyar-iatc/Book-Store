@@ -34,24 +34,14 @@ body {
   font-weight: bold;
 }
 
-.catalog-section .btn {
-  height: 12vh;
-  width: 100%;
-  background-color: #fff;
-  font-size: 1.4rem;
-  font-weight: bold;
-}
+.ca
 
 .about-section h2 {
   font-size: 2rem;
   font-weight: bold;
 }
 
-.about-section .value {
-  height: 5rem;
-  font-size: 2.7rem;
-  font-weight: bold;
-}
+
 
 .delivery-section h2 {
   font-size: 2rem;

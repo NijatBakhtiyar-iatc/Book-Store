@@ -13,7 +13,7 @@
 
 .catalog-page .all-book-carousel {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .catalog-page h2 {
@@ -26,6 +26,14 @@
   flex: 1;
   justify-content: center;
   border: none !important;
+  min-width: max-content;
+}
+
+.catalog-page .scroll-bottom {
+  max-width: 300px;
+  overflow: hidden;
+  overflow-x: auto;
+  padding-bottom: 20px;
 }
 
 .catalog-page ul li:first-child {
@@ -46,7 +54,6 @@
 .catalog-page ul li button.active {
   color: #ff8b00 !important;
 }
-
 
 .catalog-page .card {
   margin-right: 60px;
@@ -112,15 +119,15 @@
   margin: 130px 0 50px;
 }
 
-.catalog-page .bestseller-carousel{
+.catalog-page .bestseller-carousel {
   position: relative;
 }
-.catalog-page .newrelease-carousel{
+.catalog-page .newrelease-carousel {
   position: relative;
 }
 
-.catalog-page .bestseller-carousel .spin-animation{
-  transform: translate(-50%, -40%);
+.catalog-page .bestseller-carousel .spin-animation {
+  transform: translate(-50%, -35%);
 }
 
 /* READ MORE START */
@@ -141,6 +148,10 @@
   padding: 6px 12px;
   transition: 0.4s;
   margin-bottom: 54px;
+}
+
+.slick-slider {
+  position: static;
 }
 
 .catalog-page .read-more-page button:hover {
@@ -249,7 +260,15 @@
     display: flex;
     justify-content: center;
     gap: 5px;
+    position: absolute;
+    top: 420px;
+    width: 100%;
   }
+
+  .catalog-page .tab-pane .slick-dots {
+    top: 340px;
+  }
+
   .catalog-page .slick-dots li {
     margin-right: 20px !important;
     cursor: pointer;
