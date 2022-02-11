@@ -331,7 +331,7 @@ $("#admin-login-form").on("submit", function (e) {
   });
 });
 
-// ADMIN SEARCH BOOK // Kenan
+// ADMIN SEARCH BOOK
 $("#admin-search-form button").on("click", function (e) {
   // $(".modal.fade").css("display", "block")
   const searchVal = $("#admin-search-form input").val();
@@ -342,15 +342,6 @@ $("#admin-search-form button").on("click", function (e) {
     onValue(branch, function (snap) {
       const databaseVal = snap.val();
       checkVal = [];
-      // const tHead = $("<thead class='bg-pink-dark text-white'>");
-      // const tr = $("<tr>");
-      // const thCount = $("<th scope='col'>").html("#");
-      // const thBook = $("<th scope='col'>").html("Book Name");
-      // const thAuthor = $("<th scope='col'>").html("Author Name");
-      // const thButton = $("<th scope='col'>").html("");
-      // tr.append(thCount, thBook, thAuthor, thButton);
-      // tHead.append(tr);
-      // $("#searchAdminResult .context table").append(tHead);
 
       $("#searchAdminResult img").css("display", "block");
       for (let value of Object.values(databaseVal)) {
@@ -389,7 +380,8 @@ $("#admin-search-form button").on("click", function (e) {
     $("#searchAdminResult").css("display", "none");
   });
 
-  $("#searchAdminResult .removeBtn").on("click", function () {
+  $(document).on("click", "#searchAdminResult .removeBtn", function () {
+    alert("test");
     let bookName = $(this)
       .closest("tr")
       .children(".book-name")

@@ -181,6 +181,10 @@ body {
   display: none;
 }
 
+#adminPanel .bg-pink-dark {
+  padding-left: 30px;
+}
+
 #adminPanel textarea {
   resize: none;
 }
