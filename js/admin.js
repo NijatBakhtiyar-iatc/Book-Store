@@ -1,10 +1,5 @@
 import { db, set, ref, onValue, push, remove } from "./firebase.js";
 
-window.scroll({
-  top: 0,
-  behavior: "smooth",
-});
-
 // ADD SELECT VALUE
 $(".dropdown-menu #addTypeBtn").on("click", function () {
   const newCatVal = $(".dropdown-menu #addType").val();
@@ -336,7 +331,6 @@ $("#admin-login-form").on("submit", function (e) {
 
 // ADMIN SEARCH BOOK // Kenan
 $("#admin-search-form button").on("click", function (e) {
-  e.preventDefault();
   // $(".modal.fade").css("display", "block")
   const searchVal = $("#admin-search-form input").val();
   $("#searchAdminResult").css("display", "block");
@@ -364,6 +358,8 @@ $("#admin-search-form button").on("click", function (e) {
       }
 
       if (checkVal.length > 0) {
+        console.log("true");
+        console.log(checkVal.length);
         checkVal.map((value, index) => {
           const Bodytr = $("<tr>");
           const BodythCount = $("<th scope='row'>").html(index + 1);
@@ -379,7 +375,7 @@ $("#admin-search-form button").on("click", function (e) {
       }
 
       $(".modal-content .close").on("click", function () {
-        $("#searchAdminResult .context table").html("");
+        $("#searchAdminResult .context table tbody").html("");
         checkVal = [];
       });
     });
@@ -443,6 +439,7 @@ $("#admin-search-form button").on("click", function (e) {
 
 // JOINED US INFO FROM DATABASE
 onValue(ref(db, `/book-store/users`), function (snap) {
+  $("#joinTable").html("");
   const usersInfo = snap.val();
   let count = 1;
 
@@ -490,6 +487,7 @@ $(".contact-us #sendBtn").on("click", function () {
 onValue(branchForm, function (snap) {
   let count = 1;
   const contactUsers = snap.val();
+  $("#contact-table tbody").html("");
   for (let value of Object.values(contactUsers)) {
     const tr = $("<tr>");
     const th = $("<th scope='row'>").html(count);
