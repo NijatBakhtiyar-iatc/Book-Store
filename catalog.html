@@ -52,7 +52,7 @@
                   <a class="nav-link" href="search.html">Search</a>
                 </li>
               </ul>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><i class="far fa-user me-2"></i>Join</a>
+              <button  data-bs-toggle="modal" data-bs-target="#myModal"><i class="far fa-user me-2"></i>Join</button>
             </div>
           </div>
         </nav>
@@ -77,38 +77,13 @@
           <div class="container">
             <div class="all-book-carousel">
               <h2>All Books</h2>
-              <ul class="nav nav-tabs"  id="myTab" role="tablist">
-                <li class="nav-item"  role="presentation">
-                  <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button"
-                    role="tab" aria-controls="all" aria-selected="true">
-                    All
-                  </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="fantastic-tab" data-bs-toggle="tab" data-bs-target="#fantastic"
-                    type="button" role="tab" aria-controls="fantastic" aria-selected="false">
-                    Fantastic
-                  </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="bestseller-tab" data-bs-toggle="tab" data-bs-target="#bestseller"
-                    type="button" role="tab" aria-controls="bestseller" aria-selected="false">
-                    BestSeller
-                  </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="baby-tab" data-bs-toggle="tab" data-bs-target="#baby" type="button"
-                    role="tab" aria-controls="baby" aria-selected="false">
-                    Baby
-                  </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="development-tab" data-bs-toggle="tab" data-bs-target="#development"
-                    type="button" role="tab" aria-controls="development" aria-selected="false">
-                    Development
-                  </button>
-                </li>
-              </ul>
+              <div class="d-flex justify-content-center flex-grow-1">
+                <div class="scroll-bottom">
+                  <ul class="nav nav-tabs"  id="myTab" role="tablist">
+                
+                  </ul>
+                </div>
+              </div>
             </div>
             <div class="tab-content" id="myTabContent">
 
@@ -124,254 +99,32 @@
                  
                 </div>
               </div>
-              <!-- FANTASTIC BOOKS -->
-              <div class="tab-pane fade" id="fantastic" role="tabpanel" aria-labelledby="fantastic-tab">
-                <div class="spin-animation">
-                  <img
-                        class="rounded-circle"
-                        src="./images/Spinner-1s-200px.gif"
-                        width="45"/>
-                </div>
-                <div class="fantastic-page-carousel page-carousel">
-                  
-                </div>
-              </div>
-
-              <!-- BESTSELLER BOOKS -->
-              <div class="tab-pane fade" id="bestseller" role="tabpanel" aria-labelledby="bestseller-tab">
-                <div class="spin-animation">
-                  <img
-                        class="rounded-circle"
-                        src="./images/Spinner-1s-200px.gif"
-                        width="45"/>
-                </div>
-                <div class="bestseller-page-carousel page-carousel">
-                </div>
-              </div>
-
-               <!-- BABY BOOKS -->
-              <div class="tab-pane fade" id="baby" role="tabpanel" aria-labelledby="baby-tab">
-                <div class="spin-animation">
-                  <img
-                        class="rounded-circle"
-                        src="./images/Spinner-1s-200px.gif"
-                        width="45"/>
-                </div>
-                <div class="baby-page-carousel page-carousel">
-                  <div class="card">
-                    <span class="new-book">New</span>
-                    <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                      alt="The Water Knife" />
-                    <div class="card-body">
-                      <h5>The Water1 ..dsasdasdasdasds.</h5>
-                      <h6>Paolo Baci..</h6>      
-                      <button class="read-more">Read More</button>    
-                    </div>
-                  </div>
-                  <div class="card">
-                    <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                      alt="The Water Knife" />
-                    <div class="card-body">
-                      <h5>The Water2 ...</h5>
-                      <h6>Paolo Baci..</h6>       
-                      <button class="read-more">Read More</button>      
-                    </div>
-                  </div>
-                  <div class="card">
-                    <span class="new-book">New</span>
-                    <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                      alt="The Water Knife" />
-                    <div class="card-body">
-                      <h5>The Water3 ...</h5>
-                      <h6>Paolo Baci..</h6>  
-                      <button class="read-more">Read More</button>           
-                    </div>
-                  </div>
-                  <div class="card">
-                    <span class="new-book">New</span>
-                    <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                      alt="The Water Knife" />
-                    <div class="card-body">
-                      <h5>The Water4 ...</h5>
-                      <h6>Paolo Baci..</h6>
-                      <button class="read-more">Read More</button>             
-                    </div>
-                  </div>
-                  <div class="card">
-                    <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg" alt="The Water Knife" />
-                    <div class="card-body">
-                      <h5>The Water5 ...</h5>
-                      <h6>Paolo Baci..</h6>  
-                      <button class="read-more">Read More</button>           
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-               <!-- DEVELOPMENT BOOKS -->
-              <div class="tab-pane fade" id="development" role="tabpanel" aria-labelledby="development-tab">
-                <div class="spin-animation">
-                  <img
-                        class="rounded-circle"
-                        src="./images/Spinner-1s-200px.gif"
-                        width="45"/>
-                </div>
-                <div class="catalog-page-carousel page-carousel">
-                  <div class="card">
-                    <span class="new-book">New</span>
-                    <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                      alt="The Water Knife" />
-                    <div class="card-body">
-                      <h5>The Water1 ..dsasdasdasdasds.</h5>
-                      <h6>Paolo Baci..</h6>      
-                      <button class="read-more">Read More</button>    
-                    </div>
-                  </div>
-                  <div class="card">
-                    <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                      alt="The Water Knife" />
-                    <div class="card-body">
-                      <h5>The Water2 ...</h5>
-                      <h6>Paolo Baci..</h6>       
-                      <button class="read-more">Read More</button>      
-                    </div>
-                  </div>
-                  <div class="card">
-                    <span class="new-book">New</span>
-                    <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                      alt="The Water Knife" />
-                    <div class="card-body">
-                      <h5>The Water3 ...</h5>
-                      <h6>Paolo Baci..</h6>  
-                      <button class="read-more">Read More</button>           
-                    </div>
-                  </div>
-                  <div class="card">
-                    <span class="new-book">New</span>
-                    <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                      alt="The Water Knife" />
-                    <div class="card-body">
-                      <h5>The Water4 ...</h5>
-                      <h6>Paolo Baci..</h6>
-                      <button class="read-more">Read More</button>             
-                    </div>
-                  </div>
-                  <div class="card">
-                    <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg" alt="The Water Knife" />
-                    <div class="card-body">
-                      <h5>The Water5 ...</h5>
-                      <h6>Paolo Baci..</h6>  
-                      <button class="read-more">Read More</button>           
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <!-- BESTSELLER CAROUSEL -->
-            <div class="bestseller">
+            <div class="bestseller-carousel">
               <h2>Bestseller</h2>
-              <div class="catalog-page-carousel">
-                <div class="card">
-                  <span class="new-book">New</span>
-                  <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                    alt="The Water Knife" />
-                  <div class="card-body">
-                    <h5>The Water1 ..dsasdasdasdasds.</h5>
-                    <h6>Paolo Baci..</h6>      
-                    <button class="read-more">Read More</button>    
-                  </div>
-                </div>
-                <div class="card">
-                  <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                    alt="The Water Knife" />
-                  <div class="card-body">
-                    <h5>The Water2 ...</h5>
-                    <h6>Paolo Baci..</h6>       
-                    <button class="read-more">Read More</button>      
-                  </div>
-                </div>
-                <div class="card">
-                  <span class="new-book">New</span>
-                  <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                    alt="The Water Knife" />
-                  <div class="card-body">
-                    <h5>The Water3 ...</h5>
-                    <h6>Paolo Baci..</h6>  
-                    <button class="read-more">Read More</button>           
-                  </div>
-                </div>
-                <div class="card">
-                  <span class="new-book">New</span>
-                  <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                    alt="The Water Knife" />
-                  <div class="card-body">
-                    <h5>The Water4 ...</h5>
-                    <h6>Paolo Baci..</h6>
-                    <button class="read-more">Read More</button>             
-                  </div>
-                </div>
-                <div class="card">
-                  <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg" alt="The Water Knife" />
-                  <div class="card-body">
-                    <h5>The Water5 ...</h5>
-                    <h6>Paolo Baci..</h6>  
-                    <button class="read-more">Read More</button>           
-                  </div>
-                </div>
+              <div class="spin-animation">
+                <img
+                      class="rounded-circle"
+                      src="./images/Spinner-1s-200px.gif"
+                      width="45"/>
+              </div>
+              <div class="bestseller-page-carousel page-carousel">
+                
               </div>
             </div>
             <!-- NEW RELEASE CAROUSEL-->
-            <div class="new-release">
+            <div class="newrelease-carousel">
               <h2>New Release</h2>
-              <div class="catalog-page-carousel">
-                <div class="card">
-                  <span class="new-book">New</span>
-                  <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                    alt="The Water Knife" />
-                  <div class="card-body">
-                    <h5>The Water1 ..dsasdasdasdasds.</h5>
-                    <h6>Paolo Baci..</h6>      
-                    <button class="read-more">Read More</button>    
-                  </div>
-                </div>
-                <div class="card">
-                  <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                    alt="The Water Knife" />
-                  <div class="card-body">
-                    <h5>The Water2 ...</h5>
-                    <h6>Paolo Baci..</h6>       
-                    <button class="read-more">Read More</button>      
-                  </div>
-                </div>
-                <div class="card">
-                  <span class="new-book">New</span>
-                  <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                    alt="The Water Knife" />
-                  <div class="card-body">
-                    <h5>The Water3 ...</h5>
-                    <h6>Paolo Baci..</h6>  
-                    <button class="read-more">Read More</button>           
-                  </div>
-                </div>
-                <div class="card">
-                  <span class="new-book">New</span>
-                  <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg"
-                    alt="The Water Knife" />
-                  <div class="card-body">
-                    <h5>The Water4 ...</h5>
-                    <h6>Paolo Baci..</h6>
-                    <button class="read-more">Read More</button>             
-                  </div>
-                </div>
-                <div class="card">
-                  <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411059576i/23209924._SX50_.jpg" alt="The Water Knife" />
-                  <div class="card-body">
-                    <h5>The Water5 ...</h5>
-                    <h6>Paolo Baci..</h6>  
-                    <button class="read-more">Read More</button>           
-                  </div>
-                </div>
+              <div class="spin-animation">
+                <img
+                      class="rounded-circle"
+                      src="./images/Spinner-1s-200px.gif"
+                      width="45"/>
+              </div>
+              <div class="newrelease-page-carousel page-carousel">
+                
               </div>
             </div>
           </div>
@@ -384,10 +137,10 @@
               <div class="col-md-6">
                 <button class="back-btn"><img src="./images/icon/button-left-arrow.svg" alt=""> back</button>
                 <div class="book-info">
-                  <span class="year">1944</span>
-                  <h2>Hazrat Khalid Bin Waleed</h2>
-                  <h3>Sadiq Hussain Siddiqui</h3>
-                  <p>test</p>
+                  <span class="year">No added</span>
+                  <h2>No added</h2>
+                  <h3>No added</h3>
+                  <p>No added</p>
                 </div>
               </div>
               <div class="col-md-6">
@@ -459,6 +212,7 @@
                           <form id="join-form">
                            <input type="text" class="form-control form-control-lg" id = "join-fullname" placeholder="Full Name" required/>
                             <input type="email" placeholder="Email" class="form-control form-control-lg my-4" id= "join-email" required/>
+                            <p class="check-user">You have already joined with that email</p>
                             <button type="submit" class="btn btn-lg text-white btn-block mb-4" id = "join-btn">Join</button>
                           </form>
                         </div>
@@ -479,18 +233,7 @@
     <!-- SLICK CAROUSEL CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script type="module" src="./js/admin.js"></script>
-    <script>
-
-      // READ MORE PAGE START
-      $(".catalog-carousel .read-more").on("click", function(){
-        $(".catalog-carousel").css("display", "none");
-        $(".read-more-page").css("display", "block");
-      })
-      $(".read-more-page .back-btn").on("click", function(){
-        $(".catalog-carousel").css("display", "block");
-        $(".read-more-page").css("display", "none");
-      })
-      // READ MORE PAGE END
-    </script>
+    <script type="module" src="./js/join.js"></script>
+    
   </body>
   </html>

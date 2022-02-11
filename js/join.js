@@ -1,65 +1,49 @@
-import { createUserWithEmailAndPassword, auth, onAuthStateChanged } from "./firebase.js";
+import { db, set, ref, onValue, push } from "./firebase.js";
 
+//Join part
+// const fullName = $("#join-fullname");
+// const email = $("#join-email");
+// const joinBtn = $("#join-btn");
+// const alertSuccess = $('.alert-success');
+// const alertDanger = $('.alert-danger');
 
-// $('#joinLink').on('click', function() {
-//   $(".modal-backdrop").attr("class", "modal-backdrop modal fade")
-// });
-
-async function registerUser() {
-  try {
-    const joinEmail = $("#join-email").val();
-    const joinPassword = $("#join-password").val();
-
-
-    await createUserWithEmailAndPassword(
-      auth,
-      joinEmail,
-      joinPassword
-    );
-
-
-    
-    $('#join-email').val('');
-    $('#join-password').val('');
-
-    $('.alert-danger').css({ display: 'none'})
-
-    $("#myModal").attr("class", "modal fade").css("display", "none")
-    $(".modal-backdrop").attr("class", "modal-backdrop modal fade")
-    
-  } catch (error) {
-    $('.alert-danger').show();
-    $('.alert-danger .error-message').text(error.message);
-  }
-}
-
-async function loginUser() {
-  try {
-    const joinEmail = $("#join-email").val();
-    const joinPassword = $("#join-password").val();
-
-    const user = await signInWithEmailAndPassword(
-      auth,
-      joinEmail,
-      joinPassword
-    );
-
-    // console.log(user);
-
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
-
-$("#join-form").on("submit", function(e) {
+$("#myModal #join-form").on("submit", function (e) {
   e.preventDefault();
+  const joinUserName = $("#myModal #join-form #join-fullname").val();
+  const joinEmail = $("#myModal #join-form #join-email").val();
+  const pushJoinInfo = push(ref(db, "/book-store/users"));
+  let emailArr = [];
+  let count = 0;
 
-  registerUser();
-  loginUser();
-
-  onAuthStateChanged(auth, (user) => {
-    console.log(user);
+  onValue(ref(db, "/book-store/users"), function (snap) {
+    const joinedVal = snap.val();
+    if (joinedVal !== null) {
+      for (let value of Object.values(joinedVal)) {
+        if (value.email === joinEmail) {
+          count++;
+        }
+      }
+    } else {
+      set(pushJoinInfo, {
+        fullname: joinUserName,
+        email: joinEmail,
+      });
+      $("#myModal").attr("class", "modal fade").css("display", "none");
+      $(".modal-backdrop").attr("class", "modal-backdrop modal fade");
+    }
   });
-
+  if (count == 0) {
+    console.log("true");
+    set(pushJoinInfo, {
+      fullname: joinUserName,
+      email: joinEmail,
+    });
+    $("#myModal").attr("class", "modal fade").css("display", "none");
+    $(".modal-backdrop").attr("class", "modal-backdrop modal fade");
+  } else {
+    $("#join-form .check-user").css("display", "block");
+    setTimeout(() => {
+      $("#join-form .check-user").css("display", "none");
+    }, 3000);
+  }
 });

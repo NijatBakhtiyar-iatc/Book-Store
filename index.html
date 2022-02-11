@@ -53,7 +53,7 @@
                   <a class="nav-link" href="search.html">Search</a>
                 </li>
               </ul>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><i class="far fa-user me-2"></i>Join</a>
+              <button  data-bs-toggle="modal" data-bs-target="#myModal"><i class="far fa-user me-2"></i>Join</button>
             </div>
           </div>
         </nav>
@@ -85,91 +85,38 @@
           </div>
         </section>
         <section class="catalog-section mt-5">
+          <h2 class="text-center my-5">Catalog</h2>
+          <div class="spin-animation">
+            <img
+                  class="rounded-circle"
+                  src="./images/Spinner-1s-200px.gif"
+                  width="45"/>
+          </div>
           <div class="container">
-            <div class="row mt-5">
-              <div class="col-12 text-center mt-3"><h2>Catalog</h2></div>
-            </div>
-            <div class="row mt-5 d-flex">
-              <div class="col-lg-4 col-md-6">
-                <div class="col-12 shadow py-2 my-4">
-                  <button class="btn">Fantactic</button>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="col-12 shadow py-2 my-4">
-                  <button class="btn">Bestseller</button>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="col-12 shadow py-2 my-4">
-                  <button class="btn">Baby</button>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="col-12 shadow py-2 my-4">
-                  <button class="btn">Development</button>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="col-12 shadow py-2 my-4">
-                  <button class="btn">Detectives</button>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="col-12 shadow py-2 my-4">
-                  <button class="btn">Classic</button>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="col-12 shadow py-2 my-4">
-                  <button class="btn">Klassik</button>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="col-12 shadow py-2 my-4">
-                  <button class="btn">x\zxz\</button>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="col-12 shadow py-2 my-4">
-                  <button class="btn">Yumor</button>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="col-12 shadow py-2 my-4">
-                  <button class="btn">New</button>
-                </div>
-              </div>
+            <div class="catalog-btns my-5">
+
             </div>
           </div>
         </section>
         <section class="about-section mt-5">
           <div class="container mt-5">
-            <div class="row">
-              <div class="col-12 text-center mb-5"><h2>About Store</h2></div>
-              <div class="col-lg-3 col-sm-6 d-flex justify-content-center">
-                <div class="d-flex d-flex align-items-center">
-                  <div class="value mr-2" data-count="35">0</div>
+            <div class="col-12 text-center mb-5"><h2>About Store</h2></div>
+            <div class="row bg-color">
+              <div class="col-lg-3 col-sm-6">
+                  <div class="value country-first mr-2" >0</div>
                   <div><p>Branches the country</p></div>
-                </div>
               </div>
-              <div class="col-lg-3 col-sm-6 d-flex justify-content-center">
-                <div class="d-flex align-items-center">
-                  <div class="value mr-2" data-count="898">0</div>
+              <div class="col-lg-3 col-sm-6 ">
+                  <div class="value catalog mr-2" >0</div>
                   <div><p>Products catalog</p></div>
-                </div>
               </div>
-              <div class="col-lg-3 col-sm-6 d-flex justify-content-center">
-                <div class="d-flex align-items-center">
-                  <div class="value mr-2" data-count="8659">0</div>
+              <div class="col-lg-3 col-sm-6">
+                  <div class="value country-second mr-2" >0</div>
                   <div><p>Branches the country</p></div>
-                </div>
               </div>
-              <div class="col-lg-3 col-sm-6 d-flex justify-content-center">
-                <div class="d-flex align-items-center">
-                  <div class="value mr-2" data-count="72">0</div>
+              <div class="col-lg-3 col-sm-6">
+                  <div class="value cities mr-2" >0</div>
                   <div><p>Hours delivery to cities</p></div>
-                </div>
               </div>
             </div>
           </div>
@@ -177,7 +124,7 @@
         <section class="delivery-section mt-5">
           <div class="container mt-5">
             <div class="row">
-              <div class="col-12 text-center mb-5"><h2>delivery</h2></div>
+              <div class="col-12 text-center mb-5"><h2>Delivery</h2></div>
               <div class="col-12 text-center">
                 <p>
                   We work without holidays and weekends! Residents of Kiev can
@@ -253,6 +200,7 @@
                           <form id="join-form">
                            <input type="text" class="form-control form-control-lg" id = "join-fullname" placeholder="Full Name" required/>
                             <input type="email" placeholder="Email" class="form-control form-control-lg my-4" id= "join-email" required/>
+                            <p class="check-user">You have already joined with that email</p>
                             <button type="submit" class="btn btn-lg text-white btn-block mb-4" id = "join-btn">Join</button>
                           </form>
                         </div>

@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                  <a class="nav-link " aria-current="page" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link " href="catalog.html">Catalog</a>
@@ -45,14 +45,14 @@
                 <li class="nav-item">
                   <a class="nav-link" href="about.html">About Store</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item">
                   <a class="nav-link active" href="contact.html">Contact Us</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="search.html">Search</a>
                 </li>
               </ul>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><i class="far fa-user me-2"></i>Join</a>
+              <button  data-bs-toggle="modal" data-bs-target="#myModal"><i class="far fa-user me-2"></i>Join</button>
             </div>
           </div>
         </nav>
@@ -62,7 +62,7 @@
     <!-- MAIN SECTION START -->
     <main class="my-5">
       <div class="container mt-5">
-        <section class="info-section mt-5">
+        <section class="info-section contact-us mt-5">
           <div class="row mt-5 justify-content-between">
             <div class="col-md-12 pb-5 mt-5">
               <h2 class="contactTitle mt-5">Contact Us</h2>
@@ -71,20 +71,20 @@
                   <input class="form-control form-control-lg px-5 rounded" id="inputName" placeholder="Full Name">
                 </div>
                 <div class="form-group col-md-6">
-                  <input class="form-control form-control-lg px-5 rounded" type="Email" id="inputName" placeholder="Email">
+                  <input class="form-control form-control-lg px-5 rounded" type="Email" id="inputEmail" placeholder="Email">
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="form-group col-md-6">
-                  <input class="form-control form-control-lg px-5 rounded" id="inputName" placeholder="Address">
+                  <input class="form-control form-control-lg px-5 rounded" id="inputAddress" placeholder="Address">
                 </div>
                 <div class="form-group col-md-6">
-                  <input type="number" class="form-control form-control-lg px-5 rounded" id="inputName" placeholder="Phone">
+                  <input type="number" class="form-control form-control-lg px-5 rounded" id="inputPhone" placeholder="Phone">
                 </div>
               </div>
               <div class="row mt-4">
               <div class="form-group col-md-6">
-                <button id="ButtonStyle" type="button" class="btn btn-default text-white btn-lg mt-3 w-100">Send</button>
+                <button id="sendBtn" type="button" class="btn btn-default text-white btn-lg mt-3 w-100">Send</button>
               </div>
               </div>
             </div>
@@ -150,6 +150,7 @@
                           <form id="join-form">
                            <input type="text" class="form-control form-control-lg" id = "join-fullname" placeholder="Full Name" required/>
                             <input type="email" placeholder="Email" class="form-control form-control-lg my-4" id= "join-email" required/>
+                            <p class="check-user">You have already joined with that email</p>
                             <button type="submit" class="btn btn-lg text-white btn-block mb-4" id = "join-btn">Join</button>
                           </form>
                         </div>
@@ -170,5 +171,6 @@
     <script type="module" src="https://www.gstatic.com/firebasej
 s/9.6.5/firebase-database.js"></script>
     <script type="module" src="./js/admin.js"></script>
+    <script type="module" src="./js/join.js"></script>
   </body>
   </html>
