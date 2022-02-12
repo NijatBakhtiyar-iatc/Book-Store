@@ -185,9 +185,9 @@ body {
   display: none;
 }
 
-/* #adminPanel .bg-transparent{
-  padding-left: 30px !important ;
-} */
+#adminPanel .bg-pink-dark {
+  padding-left: 30px;
+}
 
 #adminPanel textarea {
   resize: none;
