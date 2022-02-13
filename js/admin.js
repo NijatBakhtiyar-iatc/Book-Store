@@ -299,14 +299,17 @@ onValue(branchAbout, function (snap) {
   });
 });
 
-// const localStorageLogin = JSON.parse(localStorage.getItem("admin-login"));
-// if (localStorageLogin) {
-//   $("#adminPanel").css("display", "flex");
-//   $("#admin-login-form").css("display", "none");
-// } else {
-//   $("#adminPanel").css("display", "none");
-//   $("#admin-login-form").css("display", "block");
-// }
+// CHECK LOGIN WITH LOCALSTORAGE
+const localStorageLogin = localStorage.getItem("admin-login");
+console.log(localStorageLogin);
+if (localStorageLogin) {
+  $("#adminSignPanel").css("display", "none");
+  $("#adminPanel").css("display", "flex");
+} else {
+  $("#adminPanel").css("display", "none");
+  $("#adminSignPanel").css("display", "flex");
+}
+
 // CHECK ADMIN LOGIN WITH DATABASE
 $("#admin-login-form").on("submit", function (e) {
   e.preventDefault();
@@ -316,12 +319,10 @@ $("#admin-login-form").on("submit", function (e) {
     const loginInfo = snap.val();
 
     if (userName === loginInfo.username && password === loginInfo.password) {
+      localStorage.setItem("admin-login", "logged in");
       $("#adminPanel").css("display", "flex");
       $("#adminSignPanel").css("display", "none");
-      $("#adminLogout").on("click", function () {
-        $("#adminPanel").css("display", "none");
-        $("#adminSignPanel").css("display", "flex");
-      });
+    
     } else {
       $("#admin-login-form .check-user").css("display", "block");
       setTimeout(() => {
@@ -331,9 +332,14 @@ $("#admin-login-form").on("submit", function (e) {
   });
 });
 
+$("#adminLogout").on("click", function () {
+  localStorage.removeItem("admin-login")
+  $("#adminPanel").css("display", "none");
+  $("#adminSignPanel").css("display", "flex");
+});
+
 // ADMIN SEARCH BOOK
 $("#admin-search-form button").on("click", function (e) {
-  // $(".modal.fade").css("display", "block")
   const searchVal = $("#admin-search-form input").val();
   $("#searchAdminResult").css("display", "block");
   const branch = ref(db, `/book-store/catalog/all`);
@@ -396,17 +402,12 @@ $("#admin-search-form button").on("click", function (e) {
       for (let catalog of Object.entries(searchVal)) {
         for (let value of Object.entries(catalog[1])) {
           if (bookName === value[1].name) {
-            // Problemli Yer
-            // checkVal.map(value => {
-            //   console.log(value);
-            // })
             $("#searchAdminResult .context table tbody").html("");
 
             tr.remove();
             remove(ref(db, `/book-store/catalog/${catalog[0]}/${value[0]}`));
             let newArr = [...new Set(checkVal)];
 
-            // Problemli Yer Bitdi
             newArr.map((value, index) => {
               const newBodytr = $("<tr>");
               const newBodythCount = $("<th scope='row'>").html(index + 1);
