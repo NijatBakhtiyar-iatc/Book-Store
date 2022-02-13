@@ -141,8 +141,8 @@ body {
   background: var(--mainColorPink);
 }
 
-#admin-login-form {
-  display: block;
+#adminSignPanel {
+  display: none;
 }
 
 #admin-search-form input {
