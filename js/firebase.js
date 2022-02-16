@@ -12,13 +12,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBGu-1n5YB7rDMApzpLoD990eLnLUQpXCM",
-  authDomain: "admin-panel-c56c3.firebaseapp.com",
-  databaseURL: "https://admin-panel-c56c3-default-rtdb.firebaseio.com",
-  projectId: "admin-panel-c56c3",
-  storageBucket: "admin-panel-c56c3.appspot.com",
-  messagingSenderId: "440643220813",
-  appId: "1:440643220813:web:b456a2a01150e34ba97304",
+  apiKey: "AIzaSyBNdhpT6NZBuApH9Lm5m8uhjYp74fX1Tic",
+  authDomain: "book-store-c95c7.firebaseapp.com",
+  projectId: "book-store-c95c7",
+  storageBucket: "book-store-c95c7.appspot.com",
+  messagingSenderId: "1003711320941",
+  appId: "1:1003711320941:web:7cac771de2698474dd4064",
+  measurementId: "G-DPRXNT0TED"
 };
 
 const app = initializeApp(firebaseConfig);
