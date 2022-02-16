@@ -301,7 +301,6 @@ onValue(branchAbout, function (snap) {
 
 // CHECK LOGIN WITH LOCALSTORAGE
 const localStorageLogin = localStorage.getItem("admin-login");
-console.log(localStorageLogin);
 if (localStorageLogin) {
   $("#adminSignPanel").css("display", "none");
   $("#adminPanel").css("display", "flex");
@@ -322,7 +321,6 @@ $("#admin-login-form").on("submit", function (e) {
       localStorage.setItem("admin-login", "logged in");
       $("#adminPanel").css("display", "flex");
       $("#adminSignPanel").css("display", "none");
-    
     } else {
       $("#admin-login-form .check-user").css("display", "block");
       setTimeout(() => {
@@ -333,7 +331,7 @@ $("#admin-login-form").on("submit", function (e) {
 });
 
 $("#adminLogout").on("click", function () {
-  localStorage.removeItem("admin-login")
+  localStorage.removeItem("admin-login");
   $("#adminPanel").css("display", "none");
   $("#adminSignPanel").css("display", "flex");
 });
@@ -357,8 +355,6 @@ $("#admin-search-form button").on("click", function (e) {
       }
 
       if (checkVal.length > 0) {
-        console.log("true");
-        console.log(checkVal.length);
         checkVal.map((value, index) => {
           const Bodytr = $("<tr>");
           const BodythCount = $("<th scope='row'>").html(index + 1);
@@ -387,7 +383,6 @@ $("#admin-search-form button").on("click", function (e) {
   });
 
   $(document).on("click", "#searchAdminResult .removeBtn", function () {
-    alert("test");
     let bookName = $(this)
       .closest("tr")
       .children(".book-name")
@@ -395,13 +390,14 @@ $("#admin-search-form button").on("click", function (e) {
       .toLowerCase()
       .trim();
     let tr = $(this).closest("tr");
-    // console.log(tr);
     const branchSearch = ref(db, "/book-store/catalog");
+
     onValue(branchSearch, function (snap) {
       const searchVal = snap.val();
+
       for (let catalog of Object.entries(searchVal)) {
         for (let value of Object.entries(catalog[1])) {
-          if (bookName === value[1].name) {
+          if (bookName === value[1].name.toLowerCase()) {
             $("#searchAdminResult .context table tbody").html("");
 
             tr.remove();
@@ -641,7 +637,6 @@ function NewRelease() {
     const newCarousel = $(".newrelease-page-carousel");
 
     for (let key of Object.values(newVal)) {
-      // console.log(value);
       const publishDate = new Date(key.addDate);
       const updateDate = publishDate.setDate(publishDate.getDate() + 40);
       const newDate = new Date().getTime();
