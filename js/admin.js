@@ -3,6 +3,7 @@ import { db, set, ref, onValue, push, remove } from "./firebase.js";
 // ADD SELECT VALUE
 $(".dropdown-menu #addTypeBtn").on("click", function () {
   const newCatVal = $(".dropdown-menu #addType").val();
+  $(".dropdown-menu #addType").val("");
   if (newCatVal.trim() !== "") {
     $("#bookSelectType").append(
       $("<option>", {
@@ -18,12 +19,18 @@ $("#bookForm").on("submit", function (e) {
   e.preventDefault();
 
   const bookName = $("#bookName").val();
+  $("#bookName").val("");
   const authorName = $("#authorName").val();
+  $("#authorName").val("");
   const bookImageUrl = $("#bookImageUrl").val();
+  $("#bookImageUrl").val("");
   const publicationYear = $("#publicationYear").val();
+  $("#publicationYear").val("");
   const isNew = true;
   const bookDesc = $("#bookDesc").val();
+  $("#bookDesc").val("");
   const selectVal = $("#bookSelectType").val();
+  $("#bookSelectType").val("");
   const addDate = new Date();
   const branch = ref(db, `/book-store/catalog/${selectVal}`);
   const branchAll = ref(db, "/book-store/catalog/all");
@@ -223,12 +230,19 @@ $("#addInfo").on("submit", function (e) {
   e.preventDefault();
 
   const aboutTitle = $("#aboutTitle").val();
+  $("#aboutTitle").val("");
   const aboutDesc = $("#aboutDesc").val();
+  $("#aboutDesc").val("");
   const aboutImageUrl = $("#aboutImageUrl").val();
+  $("#aboutImageUrl").val("");
   const countryFirst = $(".data-count #country-first").val();
+  $(".data-count #country-first").val("");
   const catalog = $(".data-count #catalog").val();
+  $(".data-count #catalog").val("");
   const countrySecond = $(".data-count #country-second").val();
+  $(".data-count #country-second").val("");
   const cities = $(".data-count #cities").val();
+  $(".data-count #cities").val("");
 
   set(branchAbout, {
     title: aboutTitle,
@@ -452,9 +466,13 @@ $("#aboutDesc").on("keyup", function (e) {
 const branchForm = ref(db, "/book-store/contact");
 $(".contact-us #sendBtn").on("click", function () {
   const inputName = $(".contact-us #inputName").val();
+  $(".contact-us #inputName").val("");
   const inputEmail = $(".contact-us #inputEmail").val();
+  $(".contact-us #inputEmail").val("");
   const inputAddress = $(".contact-us #inputAddress").val();
+  $(".contact-us #inputAddress").val("");
   const inputPhone = $(".contact-us #inputPhone").val();
+  $(".contact-us #inputPhone").val("");
   const pushNew = push(branchForm);
 
   set(pushNew, {

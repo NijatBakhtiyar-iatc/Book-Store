@@ -10,7 +10,9 @@ import { db, set, ref, onValue, push } from "./firebase.js";
 $("#myModal #join-form").on("submit", function (e) {
   e.preventDefault();
   const joinUserName = $("#myModal #join-form #join-fullname").val();
+  $("#myModal #join-form #join-fullname").val("");
   const joinEmail = $("#myModal #join-form #join-email").val();
+  $("#myModal #join-form #join-email").val("");
   const pushJoinInfo = push(ref(db, "/book-store/users"));
   let emailArr = [];
   let count = 0;
