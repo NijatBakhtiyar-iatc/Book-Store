@@ -21,7 +21,7 @@ $("#bookForm").on("submit", function (e) {
   const authorName = $("#authorName").val();
   const bookImageUrl = $("#bookImageUrl").val();
   const publicationYear = $("#publicationYear").val();
-  const isNew = $("#isNew").prop("checked");
+  const isNew = true;
   const bookDesc = $("#bookDesc").val();
   const selectVal = $("#bookSelectType").val();
   const addDate = new Date();
@@ -112,7 +112,6 @@ function AllBook() {
       name,
       url,
       year,
-      isNew,
     } of Object.values(catalogs)) {
       const card = $("<div class = 'card'>");
       const cardSpan = $("<span class = 'new-book'>").html("New");
@@ -124,12 +123,9 @@ function AllBook() {
         "Read More"
       );
 
-      if (isNew) {
-        card.prepend(cardSpan);
-      }
-
+     
       cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
-      card.append(cardImg, cardBody);
+      card.append(cardSpan, cardImg, cardBody);
       catalogPageCarousel.append(card);
     }
     var buttonValue = "all";
@@ -198,7 +194,6 @@ onValue(branchNav, function (snap) {
         name,
         url,
         year,
-        isNew,
       } of Object.values(catalogs)) {
         const card = $("<div class = 'card'>");
         const cardSpan = $("<span class = 'new-book'>").html("New");
@@ -210,12 +205,8 @@ onValue(branchNav, function (snap) {
           "Read More"
         );
 
-        if (isNew) {
-          card.prepend(cardSpan);
-        }
-
         cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
-        card.append(cardImg, cardBody);
+        card.append(cardSpan, cardImg, cardBody);
 
         tabCarousel.append(card);
       }
@@ -600,7 +591,6 @@ function BestSeller() {
       name,
       url,
       year,
-      isNew,
     } of Object.values(sellerVal)) {
       const card = $("<div class = 'card'>");
       const cardSpan = $("<span class = 'new-book'>").html("New");
@@ -612,12 +602,8 @@ function BestSeller() {
         "Read More"
       );
 
-      if (isNew) {
-        card.prepend(cardSpan);
-      }
-
       cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
-      card.append(cardImg, cardBody);
+      card.append(cardSpan, cardImg, cardBody);
       sellerCarousel.append(card);
     }
     var buttonValue = "bestseller";
