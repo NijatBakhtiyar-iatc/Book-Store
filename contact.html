@@ -60,36 +60,32 @@
     </header>
 
     <!-- MAIN SECTION START -->
-    <main class="my-5">
-      <div class="container mt-5">
-        <section class="info-section contact-us mt-5">
-          <div class="row mt-5 justify-content-between">
-            <div class="col-11 col-md-12 mx-auto pb-5 mt-5">
-              <h2 class="contactTitle mt-5">Contact Us</h2>
-              
-                <div class="row mt-4">
-               <form action=""> <div class="form-group my-2 col-md-6">
-                <input class="form-control form-control-lg px-5 rounded" type="text" id="inputName" placeholder="Full Name"             
-                required>
+              <button class="hiddenBtn" id="sendBtn"></button>
+              <div class="container">
+                <form id = "contactForm"> 
+                <div class="row mt-5">
+                <div class="my-5"></div>
+                <div class="contactTitle mt-5"><h2>Contact Us</h2></div>
+                  <div class="form-group my-2 col-md-6">
+                    <input class="form-control form-control-lg px-5 rounded" type="text" id="inputName" placeholder="Full Name"             
+                    required>
+                  </div>
+                  <div class="form-group my-2 col-md-6">
+                    <input class="form-control form-control-lg px-5 rounded" type="Email" id="inputEmail" placeholder="Email" required>
+                  </div>
+                  <div class="form-group my-2 col-md-6">
+                    <input class="form-control form-control-lg px-5 rounded" type="text" id="inputAddress" placeholder="Address" required>
+                  </div>
+                  <div class="form-group my-2 col-md-6">
+                    <input class="form-control form-control-lg px-5 rounded" type="number" id="inputPhone" placeholder="Phone" required>
+                  </div>
+                  <div class="form-group mt-3 col-md-6">
+                    <p class="contactAlert"></p>
+                    <button id="sendBtn" type="submit" class="btn btn-default text-white btn-lg mt-3 w-100">Send</button>
+                  </div>
+                </div>
+              </form>
               </div>
-              <div class="form-group my-2 col-md-6">
-                <input class="form-control form-control-lg px-5 rounded" type="Email" id="inputEmail" placeholder="Email" required>
-              </div>
-              <div class="form-group my-2 col-md-6">
-                <input class="form-control form-control-lg px-5 rounded" type="text" id="inputAddress" placeholder="Address" required>
-              </div>
-              <div class="form-group my-2 col-md-6">
-                <input class="form-control form-control-lg px-5 rounded" type="number" id="inputPhone" placeholder="Phone" required>
-              </div>
-              <div class="form-group mt-3 col-md-6">
-                <button id="sendBtn" type="submit" class="btn btn-default text-white btn-lg mt-3 w-100">Send</button>
-              </div></form>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
 
     <!-- SOCİAL MEDİA START-->
     <section class="socialMedia-section">
@@ -145,9 +141,9 @@
                         </div>
                         <div class="modal-body">
                           <form id="join-form">
-                           <input type="text" class="form-control form-control-lg" id = "join-fullname" placeholder="Full Name" required/>
+                          <input type="text" class="form-control form-control-lg" id = "join-fullname" placeholder="Full Name" required/>
                             <input type="email" placeholder="Email" class="form-control form-control-lg my-4" id= "join-email" required/>
-                            <p class="check-user">You have already joined with that email</p>
+                            <p class="check-user"></p>
                             <button type="submit" class="btn btn-lg text-white btn-block mb-4" id = "join-btn">Join</button>
                           </form>
                         </div>

@@ -318,7 +318,9 @@ if (localStorageLogin) {
 $("#admin-login-form").on("submit", function (e) {
   e.preventDefault();
   const userName = $("#admin-login-form #userName").val();
+  $("#admin-login-form #userName").val("");
   const password = $("#admin-login-form #password").val();
+  $("#admin-login-form #password").val("");
   onValue(ref(db, "/book-store/admin-login"), function (snap) {
     const loginInfo = snap.val();
 
@@ -344,9 +346,12 @@ $("#adminLogout").on("click", function () {
 // ADMIN SEARCH BOOK
 $("#admin-search-form button").on("click", function (e) {
   const searchVal = $("#admin-search-form input").val();
+  $("#admin-search-form input").val("");
   $("#searchAdminResult").css("display", "block");
   const branch = ref(db, `/book-store/catalog/all`);
   let checkVal = [];
+
+
   if (searchVal) {
     onValue(branch, function (snap) {
       const databaseVal = snap.val();
@@ -354,7 +359,7 @@ $("#admin-search-form button").on("click", function (e) {
 
       $("#searchAdminResult img").css("display", "block");
       for (let value of Object.values(databaseVal)) {
-        if (value.name.includes(searchVal)) {
+        if (value.name.toLowerCase().includes(searchVal.toLowerCase())) {
           checkVal.push(value);
         }
       }
@@ -464,15 +469,25 @@ $("#aboutDesc").on("keyup", function (e) {
 
 // CONTATC US
 const branchForm = ref(db, "/book-store/contact");
-$(".contact-us #sendBtn").on("click", function () {
-  const inputName = $(".contact-us #inputName").val();
-  $(".contact-us #inputName").val("");
-  const inputEmail = $(".contact-us #inputEmail").val();
-  $(".contact-us #inputEmail").val("");
-  const inputAddress = $(".contact-us #inputAddress").val();
-  $(".contact-us #inputAddress").val("");
-  const inputPhone = $(".contact-us #inputPhone").val();
-  $(".contact-us #inputPhone").val("");
+$("#contactForm").on("submit", function (e) {
+  e.preventDefault();
+  const inputName = $("#inputName").val();
+  $("#inputName").val("");
+  const inputEmail = $("#inputEmail").val();
+  $("#inputEmail").val("");
+  const inputAddress = $("#inputAddress").val();
+  $("#inputAddress").val("");
+  const inputPhone = $("#inputPhone").val();
+  $("#inputPhone").val("");
+
+if(inputName.trim()==="" || inputAddress.trim()===""){
+  $(".contactAlert").text("Please fill out this field.")
+  $(".contactAlert").css("display", "block");
+  setTimeout(() => {
+    $(".contactAlert").css("display", "none");
+  }, 3000);
+}
+else{
   const pushNew = push(branchForm);
 
   set(pushNew, {
@@ -481,7 +496,10 @@ $(".contact-us #sendBtn").on("click", function () {
     address: inputAddress,
     phone: inputPhone,
   });
+}
 });
+
+
 
 // FETCH CONTACTED USERS FROM DATABASE
 onValue(branchForm, function (snap) {
@@ -521,7 +539,7 @@ $(".search-form button").on("click", function (e) {
       checkVal = [];
 
       for (let value of Object.values(databaseVal)) {
-        if (value.name.includes(searchVal)) {
+        if (value.name.toLowerCase().includes(searchVal.toLowerCase())) {
           checkVal.push(value);
         }
       }

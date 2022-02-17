@@ -15,3 +15,15 @@
   height: 75px;
 }
 
+.hiddenBtn{
+  display: none;
+}
+
+.contactAlert {
+  min-height: 24px;
+  background: #fedce0;
+  color: #96394f;
+  padding: 10px;
+  border-radius: 4px;
+  display: none;
+}
