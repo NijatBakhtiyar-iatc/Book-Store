@@ -376,16 +376,21 @@ $("#admin-search-form button").on("click", function (e) {
           $("#searchAdminResult .context table tbody").append(Bodytr);
         });
       } else {
-        $("#searchAdminResult .context table").html("No Result");
+        const p = $("<p>").html("No Result")
+        p.css({
+          "margin": "20px 0 0",
+        })
+        $("#searchAdminResult .context table tbody").append(p);
       }
 
       $(".modal-content .close").on("click", function () {
         $("#searchAdminResult .context table tbody").html("");
         checkVal = [];
+        // window.location.href = 'http://127.0.0.1:5500/admin-login.html'
       });
     });
   } else {
-    $("#searchAdminResult .context table").html("No Result");
+    $("#searchAdminResult .context table tbody").html("No Result");
   }
 
   $(".search-book-section #searchAdminInput").on("keydown", function (e) {
