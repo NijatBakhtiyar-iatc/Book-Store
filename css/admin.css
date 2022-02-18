@@ -24,6 +24,10 @@ body {
   font-family: var(--fontMons);
 }
 
+.modal-open{
+  height: 100vh ;
+}
+
 .bg-pink-dark {
   background-color: var(--mainColorPink) !important;
 }
