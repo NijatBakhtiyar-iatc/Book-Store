@@ -3,6 +3,7 @@ import { db, set, ref, onValue, push, remove } from "./firebase.js";
 // ADD SELECT VALUE
 $(".dropdown-menu #addTypeBtn").on("click", function () {
   const newCatVal = $(".dropdown-menu #addType").val();
+  $(".dropdown-menu #addType").val("");
   if (newCatVal.trim() !== "") {
     $("#bookSelectType").append(
       $("<option>", {
@@ -18,12 +19,18 @@ $("#bookForm").on("submit", function (e) {
   e.preventDefault();
 
   const bookName = $("#bookName").val();
+  $("#bookName").val("");
   const authorName = $("#authorName").val();
+  $("#authorName").val("");
   const bookImageUrl = $("#bookImageUrl").val();
+  $("#bookImageUrl").val("");
   const publicationYear = $("#publicationYear").val();
+  $("#publicationYear").val("");
   const isNew = true;
   const bookDesc = $("#bookDesc").val();
+  $("#bookDesc").val("");
   const selectVal = $("#bookSelectType").val();
+  $("#bookSelectType").val("");
   const addDate = new Date();
   const branch = ref(db, `/book-store/catalog/${selectVal}`);
   const branchAll = ref(db, "/book-store/catalog/all");
@@ -223,12 +230,19 @@ $("#addInfo").on("submit", function (e) {
   e.preventDefault();
 
   const aboutTitle = $("#aboutTitle").val();
+  $("#aboutTitle").val("");
   const aboutDesc = $("#aboutDesc").val();
+  $("#aboutDesc").val("");
   const aboutImageUrl = $("#aboutImageUrl").val();
+  $("#aboutImageUrl").val("");
   const countryFirst = $(".data-count #country-first").val();
+  $(".data-count #country-first").val("");
   const catalog = $(".data-count #catalog").val();
+  $(".data-count #catalog").val("");
   const countrySecond = $(".data-count #country-second").val();
+  $(".data-count #country-second").val("");
   const cities = $(".data-count #cities").val();
+  $(".data-count #cities").val("");
 
   set(branchAbout, {
     title: aboutTitle,
@@ -304,7 +318,9 @@ if (localStorageLogin) {
 $("#admin-login-form").on("submit", function (e) {
   e.preventDefault();
   const userName = $("#admin-login-form #userName").val();
+  $("#admin-login-form #userName").val("");
   const password = $("#admin-login-form #password").val();
+  $("#admin-login-form #password").val("");
   onValue(ref(db, "/book-store/admin-login"), function (snap) {
     const loginInfo = snap.val();
 
@@ -330,9 +346,12 @@ $("#adminLogout").on("click", function () {
 // ADMIN SEARCH BOOK
 $("#admin-search-form button").on("click", function (e) {
   const searchVal = $("#admin-search-form input").val();
+  $("#admin-search-form input").val("");
   $("#searchAdminResult").css("display", "block");
   const branch = ref(db, `/book-store/catalog/all`);
   let checkVal = [];
+
+
   if (searchVal) {
     onValue(branch, function (snap) {
       const databaseVal = snap.val();
@@ -340,7 +359,7 @@ $("#admin-search-form button").on("click", function (e) {
 
       $("#searchAdminResult img").css("display", "block");
       for (let value of Object.values(databaseVal)) {
-        if (value.name.includes(searchVal)) {
+        if (value.name.toLowerCase().includes(searchVal.toLowerCase())) {
           checkVal.push(value);
         }
       }
@@ -450,11 +469,25 @@ $("#aboutDesc").on("keyup", function (e) {
 
 // CONTATC US
 const branchForm = ref(db, "/book-store/contact");
-$(".contact-us #sendBtn").on("click", function () {
-  const inputName = $(".contact-us #inputName").val();
-  const inputEmail = $(".contact-us #inputEmail").val();
-  const inputAddress = $(".contact-us #inputAddress").val();
-  const inputPhone = $(".contact-us #inputPhone").val();
+$("#contactForm").on("submit", function (e) {
+  e.preventDefault();
+  const inputName = $("#inputName").val();
+  $("#inputName").val("");
+  const inputEmail = $("#inputEmail").val();
+  $("#inputEmail").val("");
+  const inputAddress = $("#inputAddress").val();
+  $("#inputAddress").val("");
+  const inputPhone = $("#inputPhone").val();
+  $("#inputPhone").val("");
+
+if(inputName.trim()==="" || inputAddress.trim()===""){
+  $(".contactAlert").text("Please fill out this field.")
+  $(".contactAlert").css("display", "block");
+  setTimeout(() => {
+    $(".contactAlert").css("display", "none");
+  }, 3000);
+}
+else{
   const pushNew = push(branchForm);
 
   set(pushNew, {
@@ -463,7 +496,10 @@ $(".contact-us #sendBtn").on("click", function () {
     address: inputAddress,
     phone: inputPhone,
   });
+}
 });
+
+
 
 // FETCH CONTACTED USERS FROM DATABASE
 onValue(branchForm, function (snap) {
@@ -503,7 +539,7 @@ $(".search-form button").on("click", function (e) {
       checkVal = [];
 
       for (let value of Object.values(databaseVal)) {
-        if (value.name.includes(searchVal)) {
+        if (value.name.toLowerCase().includes(searchVal.toLowerCase())) {
           checkVal.push(value);
         }
       }
