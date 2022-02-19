@@ -141,6 +141,10 @@ body {
   background: var(--mainColorPink);
 }
 
+.modal-open{
+  height: 100vh;
+}
+
 #adminSignPanel {
   display: none;
 }

@@ -130,7 +130,7 @@ function AllBook() {
         "Read More"
       );
 
-     
+
       cardBody.append(cardBodyH5, cardBodyH6, cardBodyButton);
       card.append(cardSpan, cardImg, cardBody);
       catalogPageCarousel.append(card);
@@ -255,6 +255,49 @@ $("#addInfo").on("submit", function (e) {
   });
 });
 
+// FETCH BOOK COUNT and New BOOKS
+onValue(ref(db, '/book-store/catalog/all'), function (snap) {
+  const allBooks = snap.val();
+  let allBooksCount = 0;
+  let allBooksNew = 0;
+
+  for (let [key, value] of Object.entries(allBooks)) {
+    allBooksCount++;
+
+    if (value.isNew) {
+      allBooksNew++;
+    }
+  }
+
+  $(".about-section .book-counts").attr(
+    "data-count", allBooksCount);
+
+  $(".about-section .new-books").attr("data-count", allBooksNew);
+})
+
+// FETCH CATALOGS COUNTS
+onValue(ref(db, '/book-store/catalog'), function (snap) {
+  const allCatalogs = snap.val();
+  let catalogCounts = 0;
+
+  for (let key of Object.entries(allCatalogs)) {
+    catalogCounts++;
+  }
+  $(".about-section .catalog-counts").attr("data-count", catalogCounts - 1);
+})
+
+// FETCH USERS COUNTS
+onValue(ref(db, '/book-store/users'), function (snap) {
+  const allUsers = snap.val();
+  let userCounts = 0;
+
+  for (let key of Object.entries(allUsers)) {
+    userCounts++;
+  }
+  $(".about-section .user-counts").attr("data-count", userCounts);
+})
+
+
 // FETCH ABOUT DATA FROM DATABASE
 onValue(branchAbout, function (snap) {
   const aboutVal = snap.val();
@@ -262,16 +305,6 @@ onValue(branchAbout, function (snap) {
   $(".about-store p").html(aboutVal.description);
   $(".about-store .about-img").attr("src", aboutVal.url);
   $(".about-store .spin-animation").css("display", "flex");
-  $(".about-section .country-first").attr(
-    "data-count",
-    aboutVal.countryCountFirst
-  );
-  $(".about-section .catalog").attr("data-count", aboutVal.catalog);
-  $(".about-section .cities").attr("data-count", aboutVal.cities);
-  $(".about-section .country-second").attr(
-    "data-count",
-    aboutVal.countryCountSecond
-  );
 
   let a = 0;
   $(window).scroll(function () {
@@ -485,23 +518,23 @@ $("#contactForm").on("submit", function (e) {
   const inputPhone = $("#inputPhone").val();
   $("#inputPhone").val("");
 
-if(inputName.trim()==="" || inputAddress.trim()===""){
-  $(".contactAlert").text("Please fill out this field.")
-  $(".contactAlert").css("display", "block");
-  setTimeout(() => {
-    $(".contactAlert").css("display", "none");
-  }, 3000);
-}
-else{
-  const pushNew = push(branchForm);
+  if (inputName.trim() === "" || inputAddress.trim() === "") {
+    $(".contactAlert").text("Please fill out this field.")
+    $(".contactAlert").css("display", "block");
+    setTimeout(() => {
+      $(".contactAlert").css("display", "none");
+    }, 3000);
+  }
+  else {
+    const pushNew = push(branchForm);
 
-  set(pushNew, {
-    name: inputName,
-    email: inputEmail,
-    address: inputAddress,
-    phone: inputPhone,
-  });
-}
+    set(pushNew, {
+      name: inputName,
+      email: inputEmail,
+      address: inputAddress,
+      phone: inputPhone,
+    });
+  }
 });
 
 
